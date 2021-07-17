@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $0)
+BASEDIR=$(cd $(dirname $0) && pwd)
 
 cd $(mktemp -d)
 curl -L https://github.com/gohugoio/hugo/releases/download/v0.85.0/hugo_extended_0.85.0_Linux-64bit.tar.gz | tar zxv
