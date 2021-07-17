@@ -1,0 +1,14 @@
+{
+  "name": "penguinone-2021s-migration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "migrator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kuropen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
