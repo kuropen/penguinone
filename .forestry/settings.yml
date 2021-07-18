@@ -19,6 +19,8 @@ sections:
   label: Posts
   create: all
   match: "**/*"
+  templates:
+  - sam-posts-frontmatter
 - type: directory
   path: content
   label: Pages
