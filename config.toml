@@ -38,12 +38,12 @@ pygmentsCodefences       = true
     text = "who I am"
  
 [[params.mainMenu]]
-    link = "polaris"
-    text = "my alter ego"
-
-[[params.mainMenu]]
     link = "posts"
     text = "my note"
+
+[[params.mainMenu]]
+    link = "gallery"
+    text = "my picture"
 
 [[params.ackee]]
     server = "https://ackee.eternie-labs.net"
