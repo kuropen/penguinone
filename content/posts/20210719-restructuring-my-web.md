@@ -1,9 +1,11 @@
 ---
-title: "サイトの見直しなど"
-date: 2021-07-19T18:48:00+09:00
+title: サイトの見直しなど
+date: 2021-07-19T18:48:00.000+09:00
 showDate: true
-draft: false
-tags: ["activitypub","tech"]
+tags:
+- activitypub
+- tech
+
 ---
 これまで個人のプロジェクトにはAWSを使用していて、リザーブドインスタンスを使って費用を節約する観点から、夏のボーナス後の7月を起点にサーバーの運用計画を立てている。
 
@@ -23,7 +25,7 @@ tags: ["activitypub","tech"]
 
 ## 赤べこサイトのCloudflare Pages移行
 
-同様に、[赤べこサイト](https://akabe.co/)もNetlify Pagesからの配信に切り替えた。これで管理しているすべてのページが国内からの配信になる。
+同様に、[赤べこサイト](https://akabe.co/)もCloudflare Pagesからの配信に切り替えた。これで管理しているすべてのページが国内からの配信になる。
 
 ## DNSのCloudflare移行
 
