@@ -30,13 +30,11 @@ ActivityPub対応SNSから、上記のアカウントIDに対して「リモー�
 ## Kuropen管理サーバの詳細について
 
 ### サーバ環境
-（2021年7月17日現在）
+（2021年7月20日現在）
 
 プライベートインスタンスであるためインフラは最小限です。
 
-- クラウド環境: AWS 東京リージョン
-- アプリケーション＆Redisサーバ: EC2 t3a.micro
-- DBサーバ: RDS db.t3.micro
+- Web & DBサーバー: さくらのVPS 2G (ストレージ200GB拡張済)
 - ストレージ: S3 （参照用にCloudFront使用）
 - DNS: Cloudflare DNS
 
