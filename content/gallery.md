@@ -10,7 +10,7 @@ Kuropenの撮影した写真に関するページです。
 </dt>
 <dd>2020年、感染症の流行により、魔除けとしてにわかに注目を浴びた赤べこを愛でるページ。Kuropenが撮影した写真がランダムで出るようになっています。</dd>
 <dt>
-<a href="/polaris">Polaris Solaris</a>
+<a href="https://xiv.kuropen.org/polaris/">Polaris Solaris</a>
 </dt>
 <dd>ファイナルファンタジーXIVのゲーム内で撮影したスクリーンショットを収録したページです。</dd>
 </dl>

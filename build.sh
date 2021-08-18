@@ -3,15 +3,10 @@
 BASEDIR=$(cd $(dirname $0) && pwd)
 
 cd $(mktemp -d)
-curl -L https://github.com/gohugoio/hugo/releases/download/v0.85.0/hugo_extended_0.85.0_Linux-64bit.tar.gz | tar zxv
-cp hugo $BASEDIR/hugo.linux
+curl -L https://github.com/gohugoio/hugo/releases/download/v0.87.0/hugo_extended_0.87.0_Linux-64bit.tar.gz | tar zx
+mv hugo $BASEDIR/hugo.linux
 
 npm install -g postcss-cli autoprefixer postcss
-
-cd $BASEDIR/content/polaris
-for u in $(cat .imagelist); do
-    curl -LO $u
-done
 
 cd $BASEDIR
 ./hugo.linux
