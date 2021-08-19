@@ -22,12 +22,12 @@ pygmentsCodefences       = true
     title                = "Penguinone"
     # rss                = ""
 
-#[[params.videoBackground.sources]]
-#    source  = "/sample_video.mp4"
-#    type    = "video/mp4"
-#    poster  = "/background.png"
-#[params.videoBackground]
-#    overlay = "rgba(0, 0, 0, 0.4)" # optional
+[[params.videoBackground.sources]]
+    source  = "/namegawa_shrine.mp4"
+    type    = "video/mp4"
+    poster  = "/namegawa_shrine.png"
+[params.videoBackground]
+    overlay = "rgba(0, 0, 0, 0.4)" # optional
 
 [[params.mainMenu]]
     link = "about"
@@ -44,10 +44,6 @@ pygmentsCodefences       = true
 [[params.mainMenu]]
     link = "gallery"
     text = "my picture"
-
-[[params.ackee]]
-    server = "https://ackee.eternie-labs.net"
-    domainId = "071dab93-79de-493d-ab11-b00179a81cb0"
 
 [imaging]
     quality = 75
