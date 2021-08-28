@@ -13,14 +13,14 @@ image: b94c5875_9ffc_4b1c_9b6d_898f052e0290_after_20210205_f3f670074e.png
 この記事では、移管にあたって実施した事項の概略について記述します。なお、詳細につきましては[技術文書としてまとめました](https://zenn.dev/kuropen/articles/12c1203cc52139)。
 
 ### 移管の背景
-![https://images.prismic.io/penguinone/13e6334e-251f-47e9-a0c4-74a6315049bd_before_20210201.png](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/13e6334e_251f_47e9_a0c4_74a6315049bd_before_20210201_489df7a985.png)
+![https://images.prismic.io/penguinone/13e6334e-251f-47e9-a0c4-74a6315049bd_before_20210201.png](./13e6334e_251f_47e9_a0c4_74a6315049bd_before_20210201_489df7a985.png)
 
 これまで利用していたNetlifyのフリープランでは、サーバの所在地が限定されており、日本国内からのアクセスはシンガポール国内のサーバに転送されてしまいます。このためもあり、アクセスからページの表示までにやや時間がかかる状況が発生していたため、AWSに再構築を行いました。
 
 ### ステップ1: CloudFrontの構築
 はじめに、高速化策の検証と、それが不十分であった場合のAWS移管の準備のため、CloudFrontディストリビューションを準備し、DNSレコードをそちらに向ける作業を実施しました。
 
-![https://images.prismic.io/penguinone/a3c06e88-d259-4c08-bc37-51986c42fe9e_20210201_to_0204.png](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/a3c06e88_d259_4c08_bc37_51986c42fe9e_20210201_to_0204_62c25a97c5.png)
+![https://images.prismic.io/penguinone/a3c06e88-d259-4c08-bc37-51986c42fe9e_20210201_to_0204.png](./a3c06e88_d259_4c08_bc37_51986c42fe9e_20210201_to_0204_62c25a97c5.png)
 
 結果、多少の高速化は図れましたが、依然として読み込みに数秒かかる状況であったため、AWS移管を実施することとしました。
 

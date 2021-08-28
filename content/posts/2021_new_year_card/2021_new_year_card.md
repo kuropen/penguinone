@@ -38,7 +38,7 @@ image: 0480d62f_82d3_4b62_be6f_a544d6143fb7_2021_newyear_card_d2b2b883dd.png
 
 プライベートでは、メインPCが新造の自作PCへと変わりました。想定されていた主な用途としては、Final Fantasy XIV, Cities:Skylines といったゲームのプレイですが、Folding@homeに参加することにしています。
 
-![https://images.prismic.io/penguinone/41cea852-eb6a-4ee4-ae62-974fc2e788d4_20201212_123138e.jpg](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/41cea852_eb6a_4ee4_ae62_974fc2e788d4_20201212_123138e_df486898e4.jpg)
+![https://images.prismic.io/penguinone/41cea852-eb6a-4ee4-ae62-974fc2e788d4_20201212_123138e.jpg](./41cea852_eb6a_4ee4_ae62_974fc2e788d4_20201212_123138e_df486898e4.jpg)
 
 旅行は御朱印集めなどは行っていますが、感染拡大局面では控えるか厳戒態勢での実施としています。
 

@@ -16,15 +16,15 @@ image: 20200202_145110_5432ff2154.jpg
 
 改めて健康祈願に行った方がよいかと考え、1月25日に[鳩ヶ谷氷川神社](http://www.hikawajinja.jp/)を参詣。
 
-![20200125_130634.jpg](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/20200125_130634_2e92bda3c4.jpg)
+![20200125_130634.jpg](./20200125_130634_2e92bda3c4.jpg)
 
 健康祈願のお守り（鳩鈴）をいただいてきた。
 
-![hatosuzu.jpg](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/hatosuzu_ff18807b23.jpg)
+![hatosuzu.jpg](./hatosuzu_ff18807b23.jpg)
 
 ついで2月2日、今度は高崎線熊谷駅から秩父鉄道に。
 
-![20200202_140807.jpg](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/20200202_140807_e3f71b4181.jpg)
+![20200202_140807.jpg](./20200202_140807_e3f71b4181.jpg)
 
 才色兼備のラッピング車。最近走り始めたのだという。
 
@@ -40,7 +40,7 @@ image: 20200202_145110_5432ff2154.jpg
 
 そう、その日は「令和2年2月2日」。この数字の並びは当分ないだろう。
 
-![20200202_183044.jpg](https://kuropen-strapi-images.s3.ap-northeast-1.amazonaws.com/20200202_183044_b22856fcac.jpg)
+![20200202_183044.jpg](./20200202_183044_b22856fcac.jpg)
 
 さて、この2月2日の行田行きの前も若干疲れやら平衡感覚の怪しさがあったのだが、行ってみると吹き飛んだ。
 実は、身体を動かすことが重要、というだけの話なのかも知れない。
