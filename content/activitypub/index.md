@@ -1,8 +1,10 @@
 ---
 title: "ActivityPubについて"
 date: 2021-04-20T14:25:46.958Z
+type: fixed
+slug: activitypub
 ---
-![ActivityPub-logo.png](/activitypub/Activity_Pub_logo.png)
+![ActivityPub-logo.png](./Activity_Pub_logo.png)
 
 Kuropenは以下のサーバにActivityPubアカウントを開設しています。
 

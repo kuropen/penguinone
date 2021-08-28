@@ -1,6 +1,8 @@
 ---
 title: "このサイトについて"
 date: 2021-07-17T15:36:09+09:00
+type: fixed
+slug: about
 ---
 このサイトは Kuropen の個人サイトとして、プロフィール・ブログ・技術記事・ゲーム関連記事によって構成されています。
 
@@ -59,7 +61,7 @@ date: 2021-07-17T15:36:09+09:00
 
 - 2021年7月リリースの新Webページ
    - CDN: Cloudflare CDN
-   - HTML生成ソフト: Hugo
+   - HTML生成ソフト: Gatsby
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
    - Cloudflare Workers
    - フロントエンドの CloudFront で旧URLに対するアクセスを振り分け
