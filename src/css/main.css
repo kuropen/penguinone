@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-700;
+    @apply text-white;
+    @apply mx-2;
+}
+
+header {
+    @apply mt-2 mb-4;
+}
+
+h1.site-logo {
+    font-family: Orbitron, sans-serif;
+    @apply text-3xl;
+}
+
+footer {
+    font-family: "Didact Gothic", sans-serif;
+    @apply mt-2;
+    @apply text-center;
+}
+
+nav.index-nav {
+    min-height: calc(100vh - 8em);
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    @apply md:w-5/12 mx-auto;
+}
+
+@media screen and (max-width: 736px) {
+    nav.index-nav {
+        min-height: calc(100vh - 12em);
+    }
+}
+
+nav.index-nav * {
+    font-family: "Didact Gothic", sans-serif;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    line-height: 1.5em;
+    @apply mx-2 underline;
+}
+
+nav.footer-menu {
+    font-family: "Didact Gothic", sans-serif;
+    @apply md:w-5/12 mx-auto text-center;
+}
+
+nav.footer-menu a {
+    @apply underline;
+}
+
+nav.footer-menu span:not(:last-child)::after {
+    content: " · ";
+    @apply no-underline;
+}
+
+nav.footer-menu hr {
+    @apply w-1/2 mx-auto my-2;
+}
+
+nav.posts-index {
+    max-width: 65ch; /* as par .prose */
+    @apply mx-auto;
+}
+
+nav.posts-index a {
+    @apply font-bold underline leading-7;
+}

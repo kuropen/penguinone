@@ -1,6 +1,8 @@
 ---
 title: "SNSポリシー"
 date: 2021-07-21T19:02:00+09:00
+type: fixed
+slug: social
 ---
 2021年7月21日現在
 
