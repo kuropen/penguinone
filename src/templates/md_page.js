@@ -31,7 +31,7 @@ const mdPage = ({data}) => {
     }
 
     let parent = (type === 'posts' ? '/posts' : null)
-    if (frontmatter.parent !== null) {
+    if (frontmatter.parent) {
       parent = frontmatter.parent
     }
 
