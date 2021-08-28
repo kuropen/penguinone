@@ -6,26 +6,34 @@ exports.createPages = async function ({ actions, graphql }) {
             id
             frontmatter {
                 slug
+                tags
                 type
-                date
-                showDate
             }
-            html
         }
       }
     }
   `)
+  const allTags = []
   data.allMarkdownRemark.nodes.forEach(node => {
-    const {type, slug} = node.frontmatter
+    const {type, slug, tags} = node.frontmatter
     let fullPath = slug
     if (type === 'posts') {
         fullPath = `posts/${slug}`
     }
-    console.log(`${slug} (${type})`)
     actions.createPage({
       path: fullPath,
       component: require.resolve(`./src/templates/md_page.js`),
       context: { id: node.id },
+    })
+    if (tags) {
+      tags.forEach((val) => allTags.push(val))
+    }
+  })
+  allTags.forEach(tag => {
+    actions.createPage({
+      path: `tags/${tag}`,
+      component: require.resolve(`./src/templates/tag.js`),
+      context: { tag: tag }
     })
   })
 }

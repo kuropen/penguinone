@@ -73,3 +73,7 @@ nav.posts-index {
 nav.posts-index a {
     @apply font-bold underline leading-7;
 }
+
+nav.tags span {
+    @apply my-1 mr-2
+}

@@ -1,6 +1,6 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 
 const format = require('date-format')
@@ -11,12 +11,23 @@ const mdPage = ({data}) => {
         return null
     }
     const {frontmatter, html, id, excerpt} = doc
-    const {type, title, date, showDate, slug} = frontmatter
+    const {type, title, date, showDate, slug, tags} = frontmatter
     const {siteUrl} = data.site.siteMetadata
     const dateObj = new Date(date)
     let dateShown = null
     if (showDate) {
         dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
+    }
+    let tagList = null
+    if (tags) {
+      const tagListInner = tags.map((tag) => {
+        return (
+          <span><Link to={`/tags/${tag}`}>{tag}</Link></span>
+        )
+      })
+      tagList = (
+        <nav className="tags">{tagListInner}</nav>
+      )
     }
 
     let parent = (type === 'posts' ? '/posts' : null)
@@ -33,11 +44,14 @@ const mdPage = ({data}) => {
       }
     }
 
+    let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
+
     return (
-        <Layout pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={slug} pageImage={pageImage}>
+        <Layout pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
             <section className="prose mx-auto" key={id}>
                 <h1>{title}</h1>
                 {dateShown}
+                {tagList}
                 <SRLWrapper>
                   <article dangerouslySetInnerHTML={{__html: html}} />
                 </SRLWrapper>
@@ -63,6 +77,7 @@ export const query = graphql`
             }
           }
         }
+        tags
       }
       html
       excerpt(truncate: true, pruneLength: 80)

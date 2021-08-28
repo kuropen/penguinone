@@ -4,7 +4,8 @@ import { graphql, Link } from 'gatsby'
 
 const format = require('date-format')
 
-const PostsPage = ({data}) => {
+const PostsPage = ({data, pageContext}) => {
+    const {tag} = pageContext
     const {nodes} = data.allMarkdownRemark
 
     const articleLinks = nodes.map((node) => {
@@ -16,15 +17,10 @@ const PostsPage = ({data}) => {
         )
     })
     return (
-        <Layout pageTitle="My Note">
+        <Layout pageTitle={tag} parent="/tags">
             <section>
                 <div className="prose mx-auto">
-                    <h1>My Note</h1>
-                    <article>
-                        <p>Kuropenの個人ブログへようこそ。扱っているテーマは技術・社会・ガジェットなど多岐に亘っています。</p>
-                        <p>このブログの内容は原則として、<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス</a>により利用できます。</p>
-                        <p><Link to="/tags">タグ一覧</Link></p>
-                    </article>
+                    <h1>{tag}</h1>
                 </div>
                 <nav className="posts-index">
                     <ul>
@@ -39,10 +35,10 @@ const PostsPage = ({data}) => {
 export default PostsPage
 
 export const query = graphql`
-query PostsIndexQuery {
+query TagIndexQuery ($tag: String!) {
     allMarkdownRemark(
       sort: {fields: frontmatter___date, order: DESC}
-      filter: {frontmatter: {type: {eq: "posts"}}}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
     nodes {
       id
