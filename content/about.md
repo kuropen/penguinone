@@ -59,10 +59,24 @@ slug: about
 ## 当サイトのサーバ環境について
 当サイトは下記の環境で運用しています。
 
-- 2021年7月リリースの新Webページ
-   - CDN: Cloudflare CDN
-   - HTML生成ソフト: Gatsby
+- 2021年7月リリースの新Webページ (2021年8月29日現在)
+   - CDN: [Cloudflare CDN](https://www.cloudflare.com/ja-jp/)
+   - ホスティング環境: [Cloudflare Pages](https://pages.cloudflare.com/)
+   - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/)
+   - データ管理: [GitHub](https://github.com/kuropen/kuropen)
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
-   - Cloudflare Workers
+   - [Cloudflare Workers](https://workers.cloudflare.com/)
    - フロントエンドの CloudFront で旧URLに対するアクセスを振り分け
-   - 2020年1月以前の様式の記事URLかどうか、旧記事管理サーバに問い合わせて現行URLにリダイレクト
+   - 2020年1月以前の様式の記事URLなら現行URLにリダイレクト (判定用データは GitHub gist で管理)
+
+## 当サイトで使用しているコンポーネントについて
+当サイトでは以下のコンポーネントを使用しています。
+
+- Webフォント
+   - [Orbitron](https://www.theleagueofmoveabletype.com/orbitron)
+   - [Didact Gothic](https://github.com/ossobuffo/didact-gothic)
+- [Tailwind CSS](https://tailwindcss.com/)
+   - [typographyプラグイン](https://github.com/tailwindlabs/tailwindcss-typography)
+- [Simple React Lightbox](https://simple-react-lightbox.dev/)
+
+当サイトは、Victoria Drake氏作の[Hugo](https://gohugo.io/)用テーマ「[call me sam](https://victoria.dev/hugo-theme-sam/)」に着想を得て制作されました。
