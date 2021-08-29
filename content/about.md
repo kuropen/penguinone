@@ -74,7 +74,7 @@ slug: about
 
 - Webフォント
    - [Orbitron](https://www.theleagueofmoveabletype.com/orbitron)
-   - [Didact Gothic](https://github.com/ossobuffo/didact-gothic)
+   - [IBM Plex Sans / IBM Plex Sans JP](https://github.com/IBM/plex)
 - [Tailwind CSS](https://tailwindcss.com/)
    - [typographyプラグイン](https://github.com/tailwindlabs/tailwindcss-typography)
 - [Simple React Lightbox](https://simple-react-lightbox.dev/)

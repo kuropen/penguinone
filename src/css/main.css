@@ -6,6 +6,7 @@ body {
     @apply bg-gray-700;
     @apply text-white;
     @apply mx-2;
+    font-family: "IBM Plex Sans JP", "IBM Plex Sans", sans-serif;
 }
 
 header {
@@ -18,7 +19,7 @@ h1.site-logo {
 }
 
 footer {
-    font-family: "Didact Gothic", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     @apply mt-2;
     @apply text-center;
 }
@@ -40,7 +41,7 @@ nav.index-nav {
 }
 
 nav.index-nav * {
-    font-family: "Didact Gothic", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 3rem;
     margin-bottom: 2rem;
     line-height: 1.5em;
@@ -48,7 +49,7 @@ nav.index-nav * {
 }
 
 nav.footer-menu {
-    font-family: "Didact Gothic", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     @apply md:w-5/12 mx-auto text-center;
 }
 

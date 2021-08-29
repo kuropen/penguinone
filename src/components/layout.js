@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 import { Link, useStaticQuery, graphql } from "gatsby";
 
 import "@fontsource/orbitron/700.css"
-import "@fontsource/didact-gothic"
+import "@ibm/plex/css/ibm-plex-sans-jp.css"
+import "@ibm/plex/css/ibm-plex.css"
 import "../css/main.css"
 import PenguinImage from "../images/penguin.png"
 

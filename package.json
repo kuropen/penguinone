@@ -15,8 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@fontsource/didact-gothic": "^4.5.0",
     "@fontsource/orbitron": "^4.5.0",
+    "@ibm/plex": "^5.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.3",
     "date-format": "^3.0.0",
