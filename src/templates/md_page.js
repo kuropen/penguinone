@@ -38,7 +38,7 @@ const mdPage = ({data}) => {
     let pageImage = null
     if (frontmatter.image !== null) {
       if (frontmatter.image.childImageSharp !== null) {
-        pageImage = siteUrl + "/" + frontmatter.image.childImageSharp.fluid.src.substring(1)
+        pageImage = siteUrl + frontmatter.image.childImageSharp.gatsbyImageData.images.fallback.src
       } else {
         pageImage = frontmatter.image
       }
@@ -72,9 +72,7 @@ export const query = graphql`
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              src
-            }
+            gatsbyImageData(layout: FIXED, width: 590)
           }
         }
         tags
