@@ -77,5 +77,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-catch-links",
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-robots-txt",
   ],
 };
