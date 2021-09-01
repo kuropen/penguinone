@@ -43,7 +43,7 @@ query SiteTitleQuery {
         </nav>
     )
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto px-2 md:px-0">
             <Helmet title={fullTitle} htmlAttributes={{lang: 'ja'}}>
                 <link rel="shortcut icon" type="image/png" href={PenguinImage} />
                 <meta name="twitter:card" content="summary_large_image"/>
