@@ -708,10 +708,10 @@ type SitePluginPluginOptions = {
   readonly createLinkInHead: Maybe<Scalars['Boolean']>;
   readonly entryLimit: Maybe<Scalars['Int']>;
   readonly query: Maybe<Scalars['String']>;
-  readonly pathCheck: Maybe<Scalars['Boolean']>;
-  readonly allExtensions: Maybe<Scalars['Boolean']>;
   readonly isTSX: Maybe<Scalars['Boolean']>;
   readonly jsxPragma: Maybe<Scalars['String']>;
+  readonly allExtensions: Maybe<Scalars['Boolean']>;
+  readonly pathCheck: Maybe<Scalars['Boolean']>;
 };
 
 type SitePluginPluginOptionsPlugins = {
@@ -2462,10 +2462,10 @@ type SitePluginPluginOptionsFilterInput = {
   readonly createLinkInHead: Maybe<BooleanQueryOperatorInput>;
   readonly entryLimit: Maybe<IntQueryOperatorInput>;
   readonly query: Maybe<StringQueryOperatorInput>;
-  readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
-  readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
   readonly isTSX: Maybe<BooleanQueryOperatorInput>;
   readonly jsxPragma: Maybe<StringQueryOperatorInput>;
+  readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
+  readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsPluginsFilterListInput = {
@@ -2750,10 +2750,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.createLinkInHead'
   | 'pluginCreator.pluginOptions.entryLimit'
   | 'pluginCreator.pluginOptions.query'
-  | 'pluginCreator.pluginOptions.pathCheck'
-  | 'pluginCreator.pluginOptions.allExtensions'
   | 'pluginCreator.pluginOptions.isTSX'
   | 'pluginCreator.pluginOptions.jsxPragma'
+  | 'pluginCreator.pluginOptions.allExtensions'
+  | 'pluginCreator.pluginOptions.pathCheck'
   | 'pluginCreator.nodeAPIs'
   | 'pluginCreator.browserAPIs'
   | 'pluginCreator.ssrAPIs'
@@ -3411,10 +3411,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.createLinkInHead'
   | 'pluginOptions.entryLimit'
   | 'pluginOptions.query'
-  | 'pluginOptions.pathCheck'
-  | 'pluginOptions.allExtensions'
   | 'pluginOptions.isTSX'
   | 'pluginOptions.jsxPragma'
+  | 'pluginOptions.allExtensions'
+  | 'pluginOptions.pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3605,56 +3605,59 @@ type SiteBuildMetadataSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type MakeMDPageQueryQueryVariables = Exact<{
+type MakeMDPageQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type MakeMDPageQueryQuery = { readonly markdownRemark: Maybe<(
+type MakeMDPageQuery = { readonly markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
     & { readonly frontmatter: Maybe<(
-      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags'>
-      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'parent' | 'tags'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
+          Pick<ImageSharp, 'gatsbyImageData'>
+          & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
+        )> }> }
     )> }
   )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
-
-type TagIndexQueryQueryVariables = Exact<{
-  tag: Scalars['String'];
-}>;
-
-
-type TagIndexQueryQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
-      Pick<MarkdownRemark, 'id'>
-      & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date'>> }
-    )> } };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type IndexQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type IndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type IndexQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'caption' | 'path' | 'back'>>>> }> }> };
+type IndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'caption' | 'path' | 'back'>>>> }> }> };
 
-type PostsIndexQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type PostsIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PostsIndexQueryQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
+type PostsIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
       Pick<MarkdownRemark, 'id'>
       & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date'>> }
     )> } };
 
-type TagListQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type TagListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type TagListQueryQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
+type TagListQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
 
-type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type TagIndexQueryVariables = Exact<{
+  tag: Scalars['String'];
+}>;
 
 
-type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+type TagIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
+      Pick<MarkdownRemark, 'id'>
+      & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date'>> }
+    )> } };
+
+type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'siteDescription'>
       & { readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'caption' | 'path'>>>> }
     )> }> };

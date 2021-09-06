@@ -1,19 +1,19 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 
 const format = require('date-format')
 
-const PostsPage = ({data, pageContext}) => {
-    const {tag} = pageContext
+const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIndexQueryVariables>> = ({data, pageContext}) => {
+    const tag: string = pageContext.tag
     const {nodes} = data.allMarkdownRemark
 
     const articleLinks = nodes.map((node) => {
-        const dateObj = new Date(node.frontmatter.date)
+        const dateObj = node.frontmatter?.date ? new Date(node.frontmatter.date) : new Date()
         const dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
 
         return (
-            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></li>
+            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node.frontmatter?.slug}`}>{node.frontmatter?.title}</Link></li>
         )
     })
     return (
@@ -35,7 +35,7 @@ const PostsPage = ({data, pageContext}) => {
 export default PostsPage
 
 export const query = graphql`
-query TagIndexQuery ($tag: String!) {
+query TagIndex ($tag: String!) {
     allMarkdownRemark(
       sort: {fields: frontmatter___date, order: DESC}
       filter: {frontmatter: {tags: {in: [$tag]}}}

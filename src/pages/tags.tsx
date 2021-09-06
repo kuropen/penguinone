@@ -1,8 +1,8 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 
-const PostsPage = ({data}) => {
+const PostsPage: React.FC<PageProps<GatsbyTypes.TagListQuery>> = ({data}) => {
     const {edges} = data.allSitePage
 
     const tagLinks = edges.map((edge) => {
@@ -29,7 +29,7 @@ const PostsPage = ({data}) => {
 export default PostsPage
 
 export const query = graphql`
-query TagListQuery {
+query TagList {
   allSitePage(filter: {path: {regex: "/^\\/tags/"}}) {
     edges {
       node {

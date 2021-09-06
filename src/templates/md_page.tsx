@@ -1,19 +1,25 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 
 const format = require('date-format')
 
-const mdPage = ({data}) => {
+const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     const doc = data.markdownRemark
     if (!doc) {
-        return null
+      return null
     }
     const {frontmatter, html, id, excerpt} = doc
+    if (!frontmatter) {
+      return null
+    }
     const {type, title, date, showDate, slug, tags} = frontmatter
-    const {siteUrl} = data.site.siteMetadata
-    const dateObj = new Date(date)
+    if (!data.site?.siteMetadata) {
+      return null
+    }
+    const siteUrl = data.site?.siteMetadata?.siteUrl || ''
+    const dateObj = date ? new Date(date) : new Date()
     let dateShown = null
     if (showDate) {
         dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
@@ -36,12 +42,8 @@ const mdPage = ({data}) => {
     }
 
     let pageImage = null
-    if (frontmatter.image !== null) {
-      if (frontmatter.image.childImageSharp !== null) {
-        pageImage = siteUrl + frontmatter.image.childImageSharp.gatsbyImageData.images.fallback.src
-      } else {
-        pageImage = frontmatter.image
-      }
+    if (frontmatter.image) {
+      pageImage = (siteUrl + frontmatter.image?.childImageSharp?.fixed?.src) || ''
     }
 
     let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
@@ -53,7 +55,7 @@ const mdPage = ({data}) => {
                 {dateShown}
                 {tagList}
                 <SRLWrapper>
-                  <article dangerouslySetInnerHTML={{__html: html}} />
+                  <article dangerouslySetInnerHTML={{__html: html || ''}} />
                 </SRLWrapper>
             </section>
         </Layout>
@@ -61,7 +63,7 @@ const mdPage = ({data}) => {
 }
 
 export const query = graphql`
-  query MakeMDPageQuery ($id: String!) {
+  query MakeMDPage ($id: String!) {
     markdownRemark(id: {eq: $id}) {
       id
       frontmatter {
@@ -70,8 +72,12 @@ export const query = graphql`
         date
         showDate
         title
+        parent
         image {
           childImageSharp {
+            fixed {
+              src
+            }
             gatsbyImageData(layout: FIXED, width: 590)
           }
         }

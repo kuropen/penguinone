@@ -1,18 +1,18 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 
 const format = require('date-format')
 
-const PostsPage = ({data}) => {
+const PostsPage: React.FC<PageProps<GatsbyTypes.PostsIndexQuery>> = ({data}) => {
     const {nodes} = data.allMarkdownRemark
 
     const articleLinks = nodes.map((node) => {
-        const dateObj = new Date(node.frontmatter.date)
+        const dateObj = node.frontmatter?.date ? new Date(node.frontmatter.date) : new Date()
         const dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
 
         return (
-            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></li>
+            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node?.frontmatter?.slug}`}>{node?.frontmatter?.title}</Link></li>
         )
     })
     return (
@@ -39,7 +39,7 @@ const PostsPage = ({data}) => {
 export default PostsPage
 
 export const query = graphql`
-query PostsIndexQuery {
+query PostsIndex {
     allMarkdownRemark(
       sort: {fields: frontmatter___date, order: DESC}
       filter: {frontmatter: {type: {eq: "posts"}}}

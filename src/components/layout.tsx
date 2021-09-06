@@ -8,9 +8,24 @@ import "@ibm/plex/css/ibm-plex.css"
 import "../css/main.css"
 import PenguinImage from "../images/penguin.png"
 
-const Layout = ({children, pageTitle, hideMenu, parent, pageDescription, pageType, pageImage, pageSlug}) => {
-    const siteTitleQuery = useStaticQuery(graphql`
-query SiteTitleQuery {
+interface LayoutProps {
+    pageTitle?: string | null
+    hideMenu?: boolean
+    parent?: string | null
+    pageDescription?: string | null
+    pageType?: string | null
+    pageImage?: string | null
+    pageSlug?: string | null
+}
+
+interface MenuContentShown {
+    path: string,
+    caption: string
+}
+
+const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageTitle, hideMenu, parent, pageDescription, pageType, pageImage, pageSlug}) => {
+    const siteTitleQuery: GatsbyTypes.SiteTitleQuery = useStaticQuery<GatsbyTypes.SiteTitleQuery>(graphql`
+query SiteTitle {
   site {
     siteMetadata {
       title
@@ -24,14 +39,24 @@ query SiteTitleQuery {
   }
 }
 `)
-    const {title, menuContent, siteUrl, siteDescription} = siteTitleQuery.site.siteMetadata
+    //const {title, menuContent, siteUrl, siteDescription} = siteMetadata
+    const title = siteTitleQuery.site?.siteMetadata?.title,
+        menuContent = siteTitleQuery.site?.siteMetadata?.menuContent,
+        siteUrl = siteTitleQuery.site?.siteMetadata?.siteUrl,
+        siteDescription = siteTitleQuery.site?.siteMetadata?.siteDescription
+
     const fullTitle = pageTitle ? `${pageTitle} - ${title}` : title
-    let menuContentShown = menuContent
+    const originalMenuContent: MenuContentShown[] = menuContent ? menuContent.map(content => ({
+        caption: content?.caption || '',
+        path: content?.path || ''
+    })) : []
+    let menuContentShown = originalMenuContent
     if (parent) {
-        menuContentShown = ([{
+        const backMenuEntry: MenuContentShown[] = ([{
             caption: 'back',
-            path: parent
-        }]).concat(menuContent)
+            path: parent,
+        }])
+        menuContentShown = backMenuEntry.concat(originalMenuContent)
     }
     const footerMenuElements = menuContentShown.map((content) => (
         <span key={content.path}><Link to={content.path}>{content.caption}</Link></span>

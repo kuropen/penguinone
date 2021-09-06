@@ -22,7 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
     }
     actions.createPage({
       path: fullPath,
-      component: require.resolve(`./src/templates/md_page.js`),
+      component: require.resolve(`./src/templates/md_page.tsx`),
       context: { id: node.id },
     })
     if (tags) {
@@ -32,7 +32,7 @@ exports.createPages = async function ({ actions, graphql }) {
   allTags.forEach(tag => {
     actions.createPage({
       path: `tags/${tag}`,
-      component: require.resolve(`./src/templates/tag.js`),
+      component: require.resolve(`./src/templates/tag.tsx`),
       context: { tag: tag }
     })
   })
