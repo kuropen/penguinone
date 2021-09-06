@@ -25,6 +25,11 @@ module.exports = {
         back: false,
       },
       {
+        path: '/projects',
+        caption: 'my project',
+        back: false,
+      },
+      {
         path: '/',
         caption: 'main',
         back: true,
@@ -79,5 +84,6 @@ module.exports = {
     "gatsby-plugin-catch-links",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-robots-txt",
+    "gatsby-plugin-typegen",
   ],
 };
