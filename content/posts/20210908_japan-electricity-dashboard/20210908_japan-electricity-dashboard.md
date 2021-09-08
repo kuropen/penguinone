@@ -7,7 +7,7 @@ tags:
 - project
 - energy
 type: posts
-slug: 20210827_nitter
+slug: 20210908_japan-electricity-dashboard
 image: jed_screenshot.png
 ---
 この週末・9月4日から、実質約5年半ぶりに再始動したプロジェクトがあります。
