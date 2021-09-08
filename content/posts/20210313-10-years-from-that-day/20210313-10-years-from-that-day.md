@@ -3,7 +3,10 @@ title: "「あの日」から10年"
 date: 2021-03-13T00:00:00+09:00
 showDate: true
 draft: false
-tags: ["memories","thoughts"]
+tags:
+- "memories"
+- "thoughts"
+- "energy"
 type: posts
 slug: 20210313-10-years-from-that-day
 image: 2017_07_29_17_28_40_ed54c83940.jpg

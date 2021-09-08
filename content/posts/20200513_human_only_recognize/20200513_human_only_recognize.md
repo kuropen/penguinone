@@ -3,7 +3,9 @@ title: "「人が読めればいい」という紙文化"
 date: 2020-05-13T00:00:00+09:00
 showDate: true
 draft: false
-tags: ["thoughts"]
+tags:
+- "thoughts"
+- "covid-19"
 type: posts
 slug: 20200513_human_only_recognize
 image: 20200513_article_img_cccdb32f6d.jpg

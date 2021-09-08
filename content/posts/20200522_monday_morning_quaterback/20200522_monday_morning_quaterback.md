@@ -3,7 +3,10 @@ title: "「事後孔明」に気を付けよう"
 date: 2020-05-22T00:00:00+09:00
 showDate: true
 draft: false
-tags: ["thoughts"]
+tags:
+- thoughts
+- energy
+- covid-19
 type: posts
 slug: 20200522_monday_morning_quaterback
 ---

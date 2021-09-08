@@ -3,7 +3,9 @@ title: "健康祈願"
 date: 2020-02-03T00:00:00+09:00
 showDate: true
 draft: false
-tags: ["trip"]
+tags:
+- "trip"
+- "covid-19"
 type: posts
 slug: 200203-pray-for-health
 image: 20200202_145110_5432ff2154.jpg

@@ -3,7 +3,9 @@ title: "浮き草になる人々"
 date: 2020-05-17T00:00:00+09:00
 showDate: true
 draft: false
-tags: ["thoughts"]
+tags:
+- "thoughts"
+- "covid-19"
 type: posts
 slug: 20200517_people_who_have_multiple_home
 ---
