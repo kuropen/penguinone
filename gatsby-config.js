@@ -86,5 +86,15 @@ module.exports = {
     "gatsby-plugin-robots-txt",
     "gatsby-plugin-typegen",
     "gatsby-plugin-typescript",
+    {
+      resolve: 'gatsby-plugin-ackee-tracker',
+      options: {
+        domainId: '6e443bc6-17e8-44db-8acf-1d8c7a151ed6',
+        server: 'https://ackee.kuropen.org',
+        ignoreLocalhost: true,
+        ignoreOwnVisits: true,
+        detailed: false,
+      },
+    },
   ],
 };
