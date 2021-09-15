@@ -40,6 +40,8 @@ ActivityPub対応SNSから、上記のアカウントIDに対して「リモー�
 - ストレージ: S3 （参照用にCloudFront使用）
 - DNS: Cloudflare DNS
 
+![システム構成図(Dolphin以外も含む)](../system_structure_202109.png)
+
 ### CAPTCHA導入について
 直近、検索エンジンのクローラーが、当サーバや連合先で使用されていないハッシュタグの検索ページにアクセスすることで、データベース負荷が高まるという事案が[発生しています](/posts/20210613-investigation-dolphin-load)。
 

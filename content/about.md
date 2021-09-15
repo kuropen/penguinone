@@ -59,6 +59,8 @@ slug: about
 ## 当サイトのサーバ環境について
 当サイトは下記の環境で運用しています。
 
+![プロジェクト含む公開システムの構成図](./system_structure_202109.png)
+
 - 2021年7月リリースの新Webページ (2021年9月1日現在)
    - CDN: [Cloudflare CDN](https://www.cloudflare.com/ja-jp/)
    - ホスティング環境: [Cloudflare Pages](https://pages.cloudflare.com/) [^2]
@@ -66,7 +68,7 @@ slug: about
    - データ管理: [GitHub](https://github.com/kuropen/kuropen) [^3]
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
    - [Cloudflare Workers](https://workers.cloudflare.com/)
-   - フロントエンドの CloudFront で旧URLに対するアクセスを振り分け
+   - フロントエンドの Cloudflare CDN で旧URLに対するアクセスを振り分け
    - 2020年1月以前の様式の記事URLなら現行URLにリダイレクト (判定用データは GitHub gist で管理)
 
 [^2]: 版権上GitHubのリポジトリで管理できない画像類を含むコンテンツでは、Amazon S3を使用しています。
