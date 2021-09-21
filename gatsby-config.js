@@ -96,5 +96,13 @@ module.exports = {
         detailed: false,
       },
     },
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
+      options: {
+        allPageHeaders: [
+          'Strict-Transport-Security: max-age=31536000'
+        ]
+      }
+    }
   ],
 };

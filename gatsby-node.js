@@ -36,4 +36,9 @@ exports.createPages = async function ({ actions, graphql }) {
       context: { tag: tag }
     })
   })
+  const { createRedirect } = actions
+  createRedirect({fromPath: '/polaris', toPath: 'https://xiv.kuropen.org/polaris/'})
+  createRedirect({fromPath: '/blog/*', toPath: 'https://pgn-old-blog-url.kuropen.workers.dev/blog/*'})
+  createRedirect({fromPath: '/articles/*', toPath: 'https://pgn-old-blog-url.kuropen.workers.dev/articles/*'})
+  createRedirect({fromPath: '/category/*', toPath: '/tags/*'})
 }
