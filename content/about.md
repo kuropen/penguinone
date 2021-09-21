@@ -63,7 +63,7 @@ slug: about
 
 - 2021年7月リリースの新Webページ (2021年9月21日現在)
    - CDN: [Cloudflare CDN](https://www.cloudflare.com/ja-jp/)
-   - ホスティング環境: [Vercel](https://vercel.com/) [^2]
+   - ホスティング環境: [Gatsby Cloud](https://www.gatsbyjs.com/) [^2]
    - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/) [^4]
    - データ管理: [GitHub](https://github.com/kuropen/kuropen) [^3] [^5]
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
