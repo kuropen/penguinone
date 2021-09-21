@@ -17,3 +17,5 @@ hugo.linux
 ## GatsbyJS ##
 node_modules/
 .cache/
+
+.vercel

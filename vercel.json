@@ -1,0 +1,26 @@
+{
+    "redirects": [
+        {
+            "source": "/polaris",
+            "destination": "https://xiv.kuropen.org/polaris/",
+            "permanent": false
+        },
+        {
+            "source": "/polaris/",
+            "destination": "https://xiv.kuropen.org/polaris/",
+            "permanent": false
+        },
+        {
+            "source": "/category/:path*",
+            "destination": "/tags/:path*"
+        },
+        {
+            "source": "/articles/:path*",
+            "destination": "https://pgn-old-blog-url.kuropen.workers.dev/articles/:path*"
+        },
+        {
+            "source": "/blog/:path*",
+            "destination": "https://pgn-old-blog-url.kuropen.workers.dev/blog/:path*"
+        }
+    ]
+}
