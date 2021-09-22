@@ -5,7 +5,7 @@ showDate: true
 draft: false
 tags: ["trip","gadgets"]
 type: posts
-slug: 20200813-good-luck-remains.md
+slug: 20200813-good-luck-remains
 image: IMG_0022_61100a08e1.jpg
 ---
 今年の8月は元々会津若松の実家で確認しなければいけない事項があった関係で、また私個人としては、戻ることが問題なのではなく戻った先での行動が問題であるとの考えを持っている [^1] ため帰省を実施した。
