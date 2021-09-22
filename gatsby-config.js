@@ -3,7 +3,7 @@ module.exports = {
     siteUrl: "https://penguinone.kuropen.org",
     title: "Penguinone",
     siteDescription: "Kuropen's Personal Website",
-    ogpBucket: "https://penguinone-ogp-image.s3.ap-northeast-1.amazonaws.com",
+    ogpBucket: "https://ogp-img.kuropen.org",
     menuContent: [
       {
         path: '/about',
