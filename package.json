@@ -13,6 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "image-gen": "ts-node -r esm og-image/image-gen.ts",
     "test": "ts-node -r esm slug-test/slug-test.ts"
   },
   "dependencies": {
