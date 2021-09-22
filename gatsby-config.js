@@ -101,7 +101,7 @@ module.exports = {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {
         allPageHeaders: [
-          'Strict-Transport-Security: max-age=31536000'
+          'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'
         ]
       }
     }
