@@ -19,6 +19,7 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
       return null
     }
     const siteUrl = data.site?.siteMetadata?.siteUrl || ''
+    const ogpBucket = data.site?.siteMetadata?.ogpBucket || ''
     const dateObj = date ? new Date(date) : new Date()
     let dateShown = null
     if (showDate) {
@@ -28,7 +29,7 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     if (tags) {
       const tagListInner = tags.map((tag) => {
         return (
-          <span><Link to={`/tags/${tag}`}>{tag}</Link></span>
+          <span key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></span>
         )
       })
       tagList = (
@@ -41,10 +42,7 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
       parent = frontmatter.parent
     }
 
-    let pageImage = null
-    if (frontmatter.image) {
-      pageImage = (siteUrl + frontmatter.image?.childImageSharp?.fixed?.src) || ''
-    }
+    let pageImage = `${ogpBucket}/${slug}.png`
 
     let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
 
@@ -89,6 +87,7 @@ export const query = graphql`
     site {
       siteMetadata {
         siteUrl
+        ogpBucket
       }
     }
   }
