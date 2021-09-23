@@ -17,7 +17,6 @@
     "test": "ts-node -r esm slug-test/slug-test.ts"
   },
   "dependencies": {
-    "@ibm/plex": "^5.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/node": "^16.7.10",
     "@types/react": "^17.0.20",

@@ -7,7 +7,6 @@ body {
     @apply bg-gray-700;
     @apply text-white;
     @apply mx-0;
-    font-family: "IBM Plex Sans JP", "IBM Plex Sans", sans-serif;
 }
 
 header {

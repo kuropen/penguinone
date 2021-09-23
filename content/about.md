@@ -78,9 +78,12 @@ slug: about
 
 - Webフォント
    - [Orbitron](https://www.theleagueofmoveabletype.com/orbitron)
-   - [IBM Plex Sans / IBM Plex Sans JP](https://github.com/IBM/plex)
+   - [IBM Plex Sans](https://github.com/IBM/plex)
+   - [IBM Plex Sans JP](https://github.com/IBM/plex) [^4]
 - [Tailwind CSS](https://tailwindcss.com/)
    - [typographyプラグイン](https://github.com/tailwindlabs/tailwindcss-typography)
 - [Simple React Lightbox](https://simple-react-lightbox.dev/)
 
 当サイトは、Victoria Drake氏作の[Hugo](https://gohugo.io/)用テーマ「[call me sam](https://victoria.dev/hugo-theme-sam/)」に着想を得て制作されました。
+
+[^4]: ページ表示には使用せず、SNSなどで共有された際に表示されるOGPイメージの生成用に使用しています。
