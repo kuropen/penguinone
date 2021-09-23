@@ -97,6 +97,7 @@ module.exports = {
         detailed: false,
       },
     },
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {

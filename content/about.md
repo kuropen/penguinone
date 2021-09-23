@@ -59,25 +59,19 @@ slug: about
 ## 当サイトのサーバ環境について
 当サイトは下記の環境で運用しています。
 
-![プロジェクト含む公開システムの構成図](./system_structure_202110.png)
+![プロジェクト含む公開システムの構成図](./system_structure_202110_2.png)
 
 - 2021年7月リリースの新Webページ (2021年9月21日現在)
    - CDN: [Cloudflare CDN](https://www.cloudflare.com/ja-jp/)
    - ホスティング環境: [Gatsby Cloud](https://www.gatsbyjs.com/) [^2]
-   - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/) [^4]
-   - データ管理: [GitHub](https://github.com/kuropen/kuropen) [^3] [^5]
+   - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/)
+   - データ管理: [GitHub](https://github.com/kuropen/kuropen) [^3]
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
-   - [Cloudflare Workers](https://workers.cloudflare.com/)
-   - フロントエンドの Vercel で旧URLに対するアクセスを振り分け
-   - 2020年1月以前の様式の記事URLなら現行URLにリダイレクト (判定用データは GitHub gist で管理)
+   - Gatsby Cloudにて、2020年1月以前の様式の記事URLなら現行URLにリダイレクト
 
 [^2]: 版権上GitHubのリポジトリで管理できない画像類を含むコンテンツでは、Amazon S3を使用しています。
 
 [^3]: 版権上GitHubのリポジトリで管理できない画像類を含むコンテンツでは、AWS CodeCommit を使用しています。
-
-[^4]: Next.js への再移行を検討中
-
-[^5]: ヘッドレスCMSへの再移行を検討中
 
 ## 当サイトで使用しているコンポーネントについて
 当サイトでは以下のコンポーネントを使用しています。
