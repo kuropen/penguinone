@@ -1168,11 +1168,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/orbitron@^4.5.0":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/orbitron/-/orbitron-4.5.1.tgz#11df5651bcfc516aeb70d9b8472bbfcefb4f97ba"
-  integrity sha512-zYalrxIj3AzzvzUmtw71tOno3isNxGqvqihRyVBSAAE5+c8ggG0uNfLWG5PYqf1QrsztHXjQsXkpCDjxRrzR6w==
-
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/reach-router/-/reach-router-1.3.6.tgz#4e8225836959be247890b66f21a3198a0589e34d"
