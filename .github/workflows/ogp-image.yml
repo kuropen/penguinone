@@ -1,12 +1,8 @@
 name: Generate and Upload OGP Image
 on:
-  workflow_run:
-    workflows:
-      - "Test if there is wrong slug"
+  push:
     branches:
       - main
-    types:
-      - completed
 
 jobs:
   build:
