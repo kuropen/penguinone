@@ -7,6 +7,7 @@ tags:
 - "thoughts"
 - "covid-19"
 type: posts
+lang: ja
 slug: 20200513_human_only_recognize
 image: 20200513_article_img_cccdb32f6d.jpg
 ---

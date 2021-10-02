@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["gadgets","memories"]
 type: posts
+lang: ja
 slug: 20200908_my_mobilephones
 image: 2012_03_26_00_46_09_08a8a057ad.jpg
 ---

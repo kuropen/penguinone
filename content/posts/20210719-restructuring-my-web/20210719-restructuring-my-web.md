@@ -6,6 +6,7 @@ tags:
 - activitypub
 - tech
 type: posts
+lang: ja
 slug: 20210719-restructuring-my-web
 
 ---

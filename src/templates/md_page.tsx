@@ -1,20 +1,26 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
+import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 
 const format = require('date-format')
 
 const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
-    const doc = data.markdownRemark
+    let doc = data.markdownRemark
+    let fallbacked = false
     if (!doc) {
-      return null
+      doc = data.fallbackMd
+      fallbacked = true
+      if (!doc) {
+        return null
+      }
     }
     const {frontmatter, html, id, excerpt} = doc
     if (!frontmatter) {
       return null
     }
-    const {type, title, date, showDate, slug, tags} = frontmatter
+    const {type, title, date, showDate, slug, tags, lang} = frontmatter
     if (!data.site?.siteMetadata) {
       return null
     }
@@ -42,13 +48,19 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
       parent = frontmatter.parent
     }
 
-    let pageImage = `${ogpBucket}/${slug}.png`
+    let pageImage = `${ogpBucket}/${slug}_${lang}.png`
 
     let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
+    
+    let fallbackInfo = null
+    if (fallbacked) {
+      fallbackInfo = (<div className="border rounded m-2 p-2 bg-yellow-300 text-black mb-2"><FormattedMessage id="notTranslated" /></div>)
+    }
 
     return (
         <Layout pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
             <section className="prose mx-auto" key={id}>
+                {fallbackInfo}
                 <h1>{title}</h1>
                 {dateShown}
                 {tagList}
@@ -61,8 +73,8 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
 }
 
 export const query = graphql`
-  query MakeMDPage ($id: String!) {
-    markdownRemark(id: {eq: $id}) {
+  query MakeMDPage ($slug: String!, $language: String!) {
+    markdownRemark(frontmatter: {slug: {eq: $slug}, lang: {eq: $language}}) {
       id
       frontmatter {
         slug
@@ -80,6 +92,30 @@ export const query = graphql`
           }
         }
         tags
+        lang
+      }
+      html
+      excerpt(truncate: true, pruneLength: 80)
+    }
+    fallbackMd: markdownRemark(frontmatter: {slug: {eq: $slug}}) {
+      id
+      frontmatter {
+        slug
+        type
+        date
+        showDate
+        title
+        parent
+        image {
+          childImageSharp {
+            fixed {
+              src
+            }
+            gatsbyImageData(layout: FIXED, width: 590)
+          }
+        }
+        tags
+        lang
       }
       html
       excerpt(truncate: true, pruneLength: 80)

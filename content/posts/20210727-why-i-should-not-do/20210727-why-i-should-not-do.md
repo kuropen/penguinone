@@ -5,6 +5,7 @@ showDate: true
 tags:
 - thoughts
 type: posts
+lang: ja
 slug: 20210727-why-i-should-not-do
 image: tingey-injury-law-firm-DZpc4UY8ZtY-unsplash.jpg
 ---

@@ -6,6 +6,7 @@ tags:
 - tech
 - diary
 type: posts
+lang: ja
 slug: 20210922-moving-from-cloudflare
 image: uninitialized_build_environment.png
 ---

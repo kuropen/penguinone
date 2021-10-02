@@ -11,6 +11,7 @@ exports.createPages = async function ({ actions, graphql }) {
                 slug
                 tags
                 type
+                lang
             }
         }
       }
@@ -18,7 +19,7 @@ exports.createPages = async function ({ actions, graphql }) {
   `)
   const allTags = []
   data.allMarkdownRemark.nodes.forEach(node => {
-    const {type, slug, tags} = node.frontmatter
+    const {type, slug, tags, lang} = node.frontmatter
     let fullPath = slug
     if (type === 'posts') {
       fullPath = `posts/${slug}`
@@ -34,7 +35,7 @@ exports.createPages = async function ({ actions, graphql }) {
     createPage({
       path: fullPath,
       component: require.resolve(`./src/templates/md_page.tsx`),
-      context: { id: node.id },
+      context: { slug: node.frontmatter.slug },
     })
     if (tags) {
       tags.forEach((val) => allTags.push(val))

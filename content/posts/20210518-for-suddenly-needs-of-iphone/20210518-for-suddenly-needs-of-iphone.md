@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["tech"]
 type: posts
+lang: ja
 slug: 20210518-for-suddenly-needs-of-iphone
 image: paul_hoenhorst_rokr5_J_Td6_Lo_unsplash_46e2a388ff.jpg
 ---

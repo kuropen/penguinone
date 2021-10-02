@@ -2,6 +2,7 @@
 title: "ActivityPubについて"
 date: 2021-04-20T14:25:46.958Z
 type: fixed
+lang: ja
 slug: activitypub
 ---
 ![ActivityPub-logo.png](./Activity_Pub_logo.png)

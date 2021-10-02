@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["thoughts"]
 type: posts
+lang: ja
 slug: 20200822_moral_of_drivers
 image: overtaking_3396909_1920_1e1a6017ea.jpg
 ---

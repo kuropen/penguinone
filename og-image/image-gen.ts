@@ -48,7 +48,7 @@ const createOgImage = async (meta: DocumentFrontmatterAttributes) => {
     const HEIGHT = 630 as const
     const OUT_DIR = `${__dirname}/out` as const
 
-    const { title, slug } = meta
+    const { title, slug, lang } = meta
 
     registerFont(path.resolve(`${__dirname}/font/Orbitron-VariableFont_wght.ttf`), {
         family: 'Orbitron'
@@ -113,8 +113,8 @@ const createOgImage = async (meta: DocumentFrontmatterAttributes) => {
     if (fs.existsSync(OUT_DIR) === false) {
         fs.mkdirSync(OUT_DIR)
     }
-    fs.writeFileSync(path.resolve(`${OUT_DIR}/${slug}.png`), buffer)
-    console.log(`Image for ${slug} written`)
+    fs.writeFileSync(path.resolve(`${OUT_DIR}/${slug}_${lang}.png`), buffer)
+    console.log(`${slug}_${lang}.png written`)
 }
 
 const main = () => {

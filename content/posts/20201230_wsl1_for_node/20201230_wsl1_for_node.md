@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["tech","pc"]
 type: posts
+lang: ja
 slug: 20201230_wsl1_for_node
 image: 9924fd8f_bce6_4e32_bbe6_7142f42db99d_WSL_version_fc1bf5f21d.png
 ---

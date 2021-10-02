@@ -6,6 +6,7 @@ tags:
 - covid-19
 - diary
 type: posts
+lang: ja
 slug: 20210924-covid-19-vaccination-1st
 ---
 **免責事項:** この記事に記載する内容は個人の感想であり、医療・医薬品に関する正確な情報を提供することを企図したものではありません。

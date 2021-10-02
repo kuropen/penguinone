@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["pc","thoughts","brave","gadgets"]
 type: posts
+lang: ja
 slug: 20210404-brave-browser
 image: stillness_inmotion_OJ_59m1_Ll_RIE_unsplash_d9134a8b3b.jpg
 ---

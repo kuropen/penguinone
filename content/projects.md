@@ -1,6 +1,7 @@
 ---
 title: "My Projects"
 date: 2021-09-06T11:12:00+09:00
+lang: ja
 slug: projects
 type: fixed
 ---

@@ -7,6 +7,7 @@ tags:
 - project
 - energy
 type: posts
+lang: ja
 slug: 20210908_japan-electricity-dashboard
 image: jed_screenshot.png
 ---

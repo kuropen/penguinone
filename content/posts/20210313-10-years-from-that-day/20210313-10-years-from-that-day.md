@@ -8,6 +8,7 @@ tags:
 - "thoughts"
 - "energy"
 type: posts
+lang: ja
 slug: 20210313-10-years-from-that-day
 image: 2017_07_29_17_28_40_ed54c83940.jpg
 ---

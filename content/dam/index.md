@@ -1,6 +1,7 @@
 ---
 title: "ダム"
 type: fixed
+lang: ja
 slug: "dam"
 parent: "/gallery"
 ---

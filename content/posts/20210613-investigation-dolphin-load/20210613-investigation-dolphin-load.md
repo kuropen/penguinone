@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["activitypub","notice","tech"]
 type: posts
+lang: ja
 slug: 20210613-investigation-dolphin-load
 ---
 Kuropenが運用するDolphinサーバについて、2021年5月後半から高負荷が発生していましたが、その調査結果について公表します。

@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["greetings","notice","activitypub"]
 type: posts
+lang: ja
 slug: 20210417-new-activitypub-account
 ---
 KuropenはActivityPubに新アカウントを開設しました。

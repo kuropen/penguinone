@@ -8,6 +8,7 @@ tags:
 - energy
 - covid-19
 type: posts
+lang: ja
 slug: 20200522_monday_morning_quaterback
 ---
 「事後孔明」あるいは「事後諸葛亮」という言葉がある [^1][^2][^3]。（以下本稿では事後孔明という表記に統一する。）発祥は1970年代の中国文学とされる。

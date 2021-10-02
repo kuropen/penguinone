@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["living","diary"]
 type: posts
+lang: ja
 slug: 20210414-unknown-unknowns
 image: 20210414_192133_65d6f3cd64.jpg
 ---

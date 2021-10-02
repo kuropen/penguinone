@@ -1,6 +1,7 @@
 ---
 title: "My Picture"
 date: 2021-07-19T18:54:00+09:00
+lang: ja
 slug: gallery
 type: fixed
 ---

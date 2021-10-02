@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["tech"]
 type: posts
+lang: ja
 slug: 210205_migrate_to_aws
 image: b94c5875_9ffc_4b1c_9b6d_898f052e0290_after_20210205_f3f670074e.png
 ---

@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["pc"]
 type: posts
+lang: ja
 slug: 210211_display_driver_error
 image: d44a4d77_61d7_4449_96ad_814cdaf84387_nvlddmkm_error_d398d34a2a.png
 ---

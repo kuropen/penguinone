@@ -7,6 +7,7 @@ tags:
 - "trip"
 - "covid-19"
 type: posts
+lang: ja
 slug: 200203-pray-for-health
 image: 20200202_145110_5432ff2154.jpg
 ---

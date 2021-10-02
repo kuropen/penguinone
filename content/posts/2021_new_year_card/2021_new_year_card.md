@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["greetings"]
 type: posts
+lang: ja
 slug: 2021_new_year_card
 image: 0480d62f_82d3_4b62_be6f_a544d6143fb7_2021_newyear_card_d2b2b883dd.png
 ---

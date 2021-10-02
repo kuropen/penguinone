@@ -6,6 +6,7 @@ tags:
 - activitypub
 - notice
 type: posts
+lang: ja
 slug: 20210916-notice-regarding-dolphin
 ---
 [Misskey.io](https://misskey.io/@kuropen)上でお知らせした通り、[個人で開設していたDolphinインスタンス](https://kuropen.me/@krpn)は、

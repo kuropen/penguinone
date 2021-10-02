@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["thoughts"]
 type: posts
+lang: ja
 slug: 20210612-alea-jacta-est
 image: 20210611_120748_6bf1cda1b0.jpg
 ---

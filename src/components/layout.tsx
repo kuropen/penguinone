@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Link, useStaticQuery, graphql } from "gatsby";
-
+import { useStaticQuery, graphql } from "gatsby";
+import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 import "../css/main.css"
 import PenguinImage from "../images/penguin.png"
 

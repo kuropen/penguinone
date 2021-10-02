@@ -7,6 +7,7 @@ tags:
 - "thoughts"
 - "covid-19"
 type: posts
+lang: ja
 slug: 20200517_people_who_have_multiple_home
 ---
 新型コロナウイルスの流行で不要不急の県外移動を控えるように呼びかける動きが当分は続きそうだ[^1]。

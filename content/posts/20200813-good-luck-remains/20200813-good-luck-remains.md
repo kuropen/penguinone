@@ -5,6 +5,7 @@ showDate: true
 draft: false
 tags: ["trip","gadgets"]
 type: posts
+lang: ja
 slug: 20200813-good-luck-remains
 image: IMG_0022_61100a08e1.jpg
 ---

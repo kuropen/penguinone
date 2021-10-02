@@ -1,6 +1,7 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { graphql, Link, PageProps } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
+import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 
 const format = require('date-format')
 
