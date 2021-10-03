@@ -1,36 +1,41 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import ProfileCard from "../components/profileCard"
+import ArticleList from "../components/articleList"
 
 // markup
 const IndexPage: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({data}) => {
-  const menu = data.site?.siteMetadata?.menuContent?.map((content) => {
-    if (content?.back) {
-      return null
-    }
-    return (<Link key={content?.path} to={content?.path || ''}>{content?.caption}</Link>)
-  })
+
   return (
     <Layout hideMenu={true}>
-      <nav className="index-nav">
-        {menu}
-      </nav>
+      <ProfileCard />
+      <ArticleList data={data} limit={6} withMoreLink={true} />
     </Layout>
   )
 }
 
 export const query = graphql`
-query Index {
-  site {
-    siteMetadata {
-      menuContent {
-        caption
-        path
-        back
+query Index($language: String) {
+  allMarkdownRemark(
+    filter: {frontmatter: {type: {eq: "posts"}, lang: {eq: $language}}}
+    limit: 6
+    sort: {order: DESC, fields: frontmatter___date}
+  ) {
+    nodes {
+      frontmatter {
+        slug
+        title
+        date
+        image {
+          childImageSharp {
+            gatsbyImageData(aspectRatio: 1.9, transformOptions: {fit: CONTAIN})
+          }
+        }
+        lang
       }
     }
-  }
+  }  
 }
 `
 
