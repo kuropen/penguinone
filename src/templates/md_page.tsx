@@ -2,7 +2,14 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import { Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import { Alert, Paper, Typography, Box, Chip, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText, Link as MUILink } from "@mui/material"
+import MDContent from "../components/mdContent"
+import TodayIcon from '@mui/icons-material/Today'
+import TagIcon from '@mui/icons-material/Tag'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import CopyrightIcon from '@mui/icons-material/Copyright'
+import { NoPhotographyTwoTone } from "@mui/icons-material"
 
 const format = require('date-format')
 
@@ -24,28 +31,72 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     if (!data.site?.siteMetadata) {
       return null
     }
-    const siteUrl = data.site?.siteMetadata?.siteUrl || ''
     const ogpBucket = data.site?.siteMetadata?.ogpBucket || ''
     const dateObj = date ? new Date(date) : new Date()
+
     let dateShown = null
     if (showDate) {
-        dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
+      dateShown = (
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <TodayIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary={format('yyyy/MM/dd', dateObj)} />
+        </ListItem>
+      )
     }
+
     let tagList = null
     if (tags) {
       const tagListInner = tags.map((tag) => {
         return (
-          <span key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></span>
+          <span>
+            <Chip key={tag} label={tag} component={Link} to={`/tags/${tag}`} clickable />&nbsp;
+          </span>
         )
       })
       tagList = (
-        <nav className="tags">{tagListInner}</nav>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <TagIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText>
+            {tagListInner}
+          </ListItemText>
+        </ListItem>
       )
     }
 
+    // TODO conditional generation for another license
+    const copyright = (
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <CopyrightIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText>
+          <MUILink rel='license' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'><FormattedMessage id="ccLicense" /></MUILink>
+        </ListItemText>
+      </ListItem>
+    )
+
+    let returnAnchor = null
     let parent = (type === 'posts' ? '/posts' : null)
     if (frontmatter.parent) {
       parent = frontmatter.parent
+    }
+    if (parent) {
+      const returnMessage = (type === 'posts') ? <FormattedMessage id="returnArticleList" /> : <FormattedMessage id="returnPreviousPage" />
+      returnAnchor = (
+        <Box sx={{m: 1}}>
+          <Button component={Link} to={parent} startIcon={<ArrowBackIcon />}>{returnMessage}</Button>
+        </Box>
+      )
     }
 
     let pageImage = `${ogpBucket}/${slug}_${lang}.png`
@@ -54,20 +105,38 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     
     let fallbackInfo = null
     if (fallbacked) {
-      fallbackInfo = (<div className="border rounded m-2 p-2 bg-yellow-300 text-black mb-2"><FormattedMessage id="notTranslated" /></div>)
+      fallbackInfo = (<Paper sx={{m: 1}}><Alert severity="warning"><FormattedMessage id="notTranslated" /></Alert></Paper>)
+    }
+
+    let metaDataList = <React.Fragment />
+    const metaDataContents = [dateShown, tagList, copyright]
+    if (metaDataContents.filter((element) => (element !== null)).length > 0) {
+      metaDataList = (
+        <List sx={{width: '100%'}}>
+          {metaDataContents}
+        </List>
+      )
     }
 
     return (
-        <Layout pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
-            <section className="prose mx-auto" key={id}>
-                {fallbackInfo}
-                <h1>{title}</h1>
-                {dateShown}
-                {tagList}
-                <SRLWrapper>
-                  <article dangerouslySetInnerHTML={{__html: html || ''}} />
-                </SRLWrapper>
-            </section>
+        <Layout key={id} pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
+            {returnAnchor}
+            {fallbackInfo}
+            <Box component="section">
+              <Paper sx={{m: 1, p: 2}}>
+                  <Typography component="h2" variant="h4">{title}</Typography>
+                  {metaDataList}
+              </Paper>
+              <Paper sx={{m: 1, p: 2}}>
+                  <SRLWrapper>
+                    {/* @ts-ignore */}
+                    <MDContent>
+                      <article dangerouslySetInnerHTML={{__html: html || ''}} />
+                    </MDContent>
+                  </SRLWrapper>
+              </Paper>
+            </Box>
+            {returnAnchor}
         </Layout>
     )
 }
