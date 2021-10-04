@@ -6,7 +6,8 @@ const SectionHead: React.FC = ({children}) => {
     const baseColor = theme.palette.background.default
     return (
         <Container sx={{
-            m: 2,
+            mt: 2,
+            mb: 2,
             p: 1,
             textAlign: 'center',
             borderImage: `linear-gradient(to right, ${baseColor}, #119988 5%, #119988 95%, ${baseColor})`,
