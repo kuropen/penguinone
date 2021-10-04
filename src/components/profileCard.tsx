@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Paper, Box, Container, Grid, Typography, List, ListItem, ListItemText, Avatar, ListItemAvatar, useTheme, useMediaQuery, Button } from "@mui/material"
+import { Paper, Box, Container, Grid, Typography, List, ListItem, ListItemText, Avatar, ListItemAvatar, useTheme, useMediaQuery, Button, styled } from "@mui/material"
 import KPAvatar, { AvatarInList } from "./avatar"
 import { useIntl, Link } from "gatsby-plugin-react-intl"
 import { visuallyHidden } from '@mui/utils'
@@ -19,6 +19,14 @@ const ProfileCard: React.FC = () => {
     const homeTowns = ['saitama', 'aizuwakamatsu'].map((key) => {
         return intl.formatMessage({id: key})
     }).join(intl.formatMessage({id: 'joinGlue'}))
+
+    // Changing font only at hometown field in Japanese.
+    // Noto Sans CJK JP should NOT be used here due to glyph designation of Saitama City
+    // (https://www.fnn.jp/articles/-/8186)
+    const HomeTownBox = styled('div')(({theme}) => ({
+       fontFamily: intl.locale === 'ja' ? "'Sawarabi Gothic', sans-serif" : "inherit"
+    }))
+
     return (
     <Box>
       <SectionHead>
@@ -50,7 +58,7 @@ const ProfileCard: React.FC = () => {
                                     <HomeIcon />
                                 </Avatar>
                             </ListItemAvatar>
-                            <ListItemText primary={intl.formatMessage({id: 'hometown'})} secondary={homeTowns} />
+                            <ListItemText primary={intl.formatMessage({id: 'hometown'})} secondary={<HomeTownBox>{homeTowns}</HomeTownBox>} />
                         </ListItem>
                         <ListItem>
                             <ListItemAvatar>

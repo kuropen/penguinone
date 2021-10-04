@@ -46,6 +46,9 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageT
                 palette: {
                     mode: prefersDarkMode ? 'dark' : 'light',
                 },
+                typography: {
+                    fontFamily: "'Roboto', 'Helvetica', 'Arial', 'Noto Sans JP', sans-serif"
+                }
             }),
         [prefersDarkMode],
     )
