@@ -9,7 +9,7 @@ slug: activitypub
 
 Kuropenは以下のサーバにActivityPubアカウントを開設しています。
 
-- Misskey.io (メインアカウント): [@kuropen@misskey.io](https://misskey.io/@kuropen)
+- 銀河丼 (メインアカウント): [@kuropen@gingadon.com](https://gingadon.com/@kuropen)
 - 個人サーバ ([旧アカウント](/posts/20210916-notice-regarding-dolphin)): [@krpn@kuropen.me](https://kuropen.me/@krpn)
 
 なお、ActivityPubアカウントに関するお知らせは [ブログのActivityPubカテゴリ](/tags/activitypub) をご覧ください。

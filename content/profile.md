@@ -14,8 +14,8 @@ slug: profile
 ※[SNSポリシー](/social)をご確認の上ご利用ください。
 
 - [Fediverse/ActivityPub](/activitypub)
-  - [Dolphin](https://kuropen.me/@krpn)
-  - [Misskey](https://misskey.io/@kuropen) ※上記障害時の予備アカウント
+  - [Mastodon (銀河丼)](https://gingadon.com/@kuropen)
+  - [Dolphin](https://kuropen.me/@krpn) ※旧アカウント
 - [Twitter](https://twitter.com/kuropen_aizu)
 - [Facebook](https://www.facebook.com/yuda.hirochika)
 - [Instagram](https://instagram.com/kuropen)
