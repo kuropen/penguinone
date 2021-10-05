@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "image-gen": "ts-node -r esm og-image/image-gen.ts",
-    "test": "ts-node -r esm slug-test/slug-test.ts"
+    "test": "ts-node -r esm slug-test/slug-test.ts",
+    "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -34,11 +35,11 @@
     "gatsby": "^3.12.1",
     "gatsby-plugin-ackee-tracker": "^3.0.0",
     "gatsby-plugin-catch-links": "^3.12.0",
-    "gatsby-plugin-gatsby-cloud": "^3.2.0",
     "gatsby-plugin-image": "^1.12.0",
     "gatsby-plugin-react-helmet": "^4.12.0",
     "gatsby-plugin-react-intl": "^3.0.2",
     "gatsby-plugin-robots-txt": "^1.6.9",
+    "gatsby-plugin-s3": "^0.3.8",
     "gatsby-plugin-sharp": "^3.12.0",
     "gatsby-plugin-sitemap": "^4.8.0",
     "gatsby-plugin-typegen": "^2.2.4",

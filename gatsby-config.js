@@ -76,12 +76,10 @@ module.exports = {
     "gatsby-plugin-typegen",
     "gatsby-plugin-typescript",
     {
-      resolve: 'gatsby-plugin-gatsby-cloud',
+      resolve: 'gatsby-plugin-s3',
       options: {
-        allPageHeaders: [
-          'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload',
-          'Permissions-Policy: interest-cohort=()',
-        ]
+        bucketName: 'penguinone.kuropen.org',
+        region: 'ap-northeast-1',
       }
     },
     {

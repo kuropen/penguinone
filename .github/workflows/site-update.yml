@@ -1,4 +1,4 @@
-name: Generate and Upload OGP Image
+name: Site Update
 on:
   push:
     branches:
@@ -19,12 +19,18 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       
-      - name: Generating image
+      - name: Generating OGP image
         run: yarn image-gen
 
-      - name: Upload image
+      - name: Upload OGP image
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp --recursive --region ap-northeast-1 og-image/out s3://ogp-img.kuropen.org/ --acl public-read
+
+      - name: Building site
+        run: yarn build
+
+      - name: Uploading site
+        run: yarn deploy
