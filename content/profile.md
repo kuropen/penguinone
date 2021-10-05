@@ -11,7 +11,7 @@ slug: profile
 個人サイトはネットワークインフラに関する研究の場として開設している。
 
 ## SNSアカウント
-※[SNSポリシー](/social)をご確認の上ご利用ください。
+※[SNSポリシー](/ja/social)をご確認の上ご利用ください。
 
 - [Fediverse/ActivityPub](/activitypub)
   - [Mastodon (銀河丼)](https://gingadon.com/@kuropen)
@@ -26,7 +26,7 @@ slug: profile
   - RPG: 主なプレイタイトルは[Final Fantasy XIV](https://xiv.kuropen.org/polaris/)・英雄伝説 軌跡シリーズなど
   - シミュレーションゲーム : 主に戦略シミュレーションや都市シミュレーション
 - 寺社参詣・御朱印集め
-- [ダム探訪](/dam/)
+- [ダム探訪](/ja/dam)
 - テレビアニメ・モータースポーツの中継などを見ていることも多い
 
 ## 保有資格
