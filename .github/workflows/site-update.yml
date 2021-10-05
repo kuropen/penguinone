@@ -32,9 +32,3 @@ jobs:
       - name: Upload OGP image
         run: |
           aws s3 cp --recursive --region ap-northeast-1 og-image/out s3://ogp-img.kuropen.org/ --acl public-read
-
-      - name: Building site
-        run: yarn build
-
-      - name: Uploading site
-        run: yarn deploy

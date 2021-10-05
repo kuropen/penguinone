@@ -76,10 +76,8 @@ module.exports = {
     "gatsby-plugin-typegen",
     "gatsby-plugin-typescript",
     {
-      resolve: 'gatsby-plugin-s3',
+      resolve: 'gatsby-plugin-zeit-now',
       options: {
-        bucketName: 'penguinone.kuropen.org',
-        region: 'ap-northeast-1',
       }
     },
     {
