@@ -1,5 +1,5 @@
 ---
-title: ActivityPubアカウントに関するご報告
+title: Notice regarding ActivityPub account
 date: 2021-10-05T20:05:00.000+09:00
 showDate: true
 tags:
