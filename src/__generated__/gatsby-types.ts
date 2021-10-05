@@ -261,8 +261,6 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -415,7 +413,6 @@ type SitePluginPluginOptions = {
   readonly isTSX: Maybe<Scalars['Boolean']>;
   readonly jsxPragma: Maybe<Scalars['String']>;
   readonly allExtensions: Maybe<Scalars['Boolean']>;
-  readonly allPageHeaders: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly languages: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly defaultLanguage: Maybe<Scalars['String']>;
   readonly redirect: Maybe<Scalars['Boolean']>;
@@ -816,9 +813,9 @@ type MarkdownRemark_tableOfContentsArgs = {
 type MarkdownRemarkFrontmatter = {
   readonly title: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
+  readonly type: Maybe<Scalars['String']>;
   readonly lang: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
-  readonly type: Maybe<Scalars['String']>;
   readonly parent: Maybe<Scalars['String']>;
   readonly showDate: Maybe<Scalars['Boolean']>;
   readonly draft: Maybe<Scalars['Boolean']>;
@@ -962,8 +959,6 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -1283,9 +1278,9 @@ type MarkdownRemarkFilterInput = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
+  readonly type: Maybe<StringQueryOperatorInput>;
   readonly lang: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly type: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<StringQueryOperatorInput>;
   readonly showDate: Maybe<BooleanQueryOperatorInput>;
   readonly draft: Maybe<BooleanQueryOperatorInput>;
@@ -1589,9 +1584,9 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.id'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.frontmatter.date'
+  | 'childrenMarkdownRemark.frontmatter.type'
   | 'childrenMarkdownRemark.frontmatter.lang'
   | 'childrenMarkdownRemark.frontmatter.slug'
-  | 'childrenMarkdownRemark.frontmatter.type'
   | 'childrenMarkdownRemark.frontmatter.parent'
   | 'childrenMarkdownRemark.frontmatter.showDate'
   | 'childrenMarkdownRemark.frontmatter.draft'
@@ -1689,9 +1684,9 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.id'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.frontmatter.date'
+  | 'childMarkdownRemark.frontmatter.type'
   | 'childMarkdownRemark.frontmatter.lang'
   | 'childMarkdownRemark.frontmatter.slug'
-  | 'childMarkdownRemark.frontmatter.type'
   | 'childMarkdownRemark.frontmatter.parent'
   | 'childMarkdownRemark.frontmatter.showDate'
   | 'childMarkdownRemark.frontmatter.draft'
@@ -2252,8 +2247,6 @@ type SiteFieldsEnum =
   | 'siteMetadata.menuContent.caption'
   | 'siteMetadata.menuContent.captionTranslate'
   | 'siteMetadata.menuContent.back'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2387,8 +2380,6 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -2692,7 +2683,6 @@ type SitePluginPluginOptionsFilterInput = {
   readonly isTSX: Maybe<BooleanQueryOperatorInput>;
   readonly jsxPragma: Maybe<StringQueryOperatorInput>;
   readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
-  readonly allPageHeaders: Maybe<StringQueryOperatorInput>;
   readonly languages: Maybe<StringQueryOperatorInput>;
   readonly defaultLanguage: Maybe<StringQueryOperatorInput>;
   readonly redirect: Maybe<BooleanQueryOperatorInput>;
@@ -2984,7 +2974,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.isTSX'
   | 'pluginCreator.pluginOptions.jsxPragma'
   | 'pluginCreator.pluginOptions.allExtensions'
-  | 'pluginCreator.pluginOptions.allPageHeaders'
   | 'pluginCreator.pluginOptions.languages'
   | 'pluginCreator.pluginOptions.defaultLanguage'
   | 'pluginCreator.pluginOptions.redirect'
@@ -3209,7 +3198,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.isTSX'
   | 'pluginOptions.jsxPragma'
   | 'pluginOptions.allExtensions'
-  | 'pluginOptions.allPageHeaders'
   | 'pluginOptions.languages'
   | 'pluginOptions.defaultLanguage'
   | 'pluginOptions.redirect'
@@ -3813,9 +3801,9 @@ type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter.title'
   | 'frontmatter.date'
+  | 'frontmatter.type'
   | 'frontmatter.lang'
   | 'frontmatter.slug'
-  | 'frontmatter.type'
   | 'frontmatter.parent'
   | 'frontmatter.showDate'
   | 'frontmatter.draft'
@@ -4045,6 +4033,29 @@ type MarkdownRemarkSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'siteDescription'>
+      & { readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'captionTranslate' | 'path'>>>> }
+    )> }> };
+
+type TagListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type TagListQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
+
+type IndexQueryVariables = Exact<{
+  language: Maybe<Scalars['String']>;
+}>;
+
+
+type IndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
+        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
+        & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+      )> }> } };
+
 type PostsIndexQueryVariables = Exact<{
   language: Maybe<Scalars['String']>;
 }>;
@@ -4058,20 +4069,13 @@ type PostsIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyA
       )> }
     )> } };
 
-type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'siteDescription'>
-      & { readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'captionTranslate' | 'path'>>>> }
-    )> }> };
-
-type IndexQueryVariables = Exact<{
+type TagIndexQueryVariables = Exact<{
   language: Maybe<Scalars['String']>;
+  tag: Maybe<Scalars['String']>;
 }>;
 
 
-type IndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
+type TagIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
         Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
         & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
       )> }> } };
@@ -4102,22 +4106,6 @@ type MakeMDPageQuery = { readonly markdownRemark: Maybe<(
     )> }
   )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'ogpBucket'>> }> };
 
-type TagIndexQueryVariables = Exact<{
-  language: Maybe<Scalars['String']>;
-  tag: Maybe<Scalars['String']>;
-}>;
-
-
-type TagIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
-        & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
-      )> }> } };
-
-type TagListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type TagListQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
-
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -4143,10 +4131,5 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 }

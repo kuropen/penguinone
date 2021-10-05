@@ -47,6 +47,7 @@ exports.createPages = async function ({ actions, graphql }) {
       component: require.resolve(`./src/templates/tag.tsx`),
       context: { tag: tag }
     })
+    createRedirect({fromPath: `/category/${tag}`, toPath: `/tags/${tag}`})
   })
 
   const prismicIdJson = await fs.readFile('./prismic_id.json')
@@ -63,5 +64,4 @@ exports.createPages = async function ({ actions, graphql }) {
   }
 
   createRedirect({fromPath: '/polaris', toPath: 'https://xiv.kuropen.org/polaris/'})
-  createRedirect({fromPath: '/category/*', toPath: '/tags/*'})
 }
