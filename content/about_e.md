@@ -54,10 +54,9 @@ All websites on domains above are HTTPS-only. HTTP protocol communications are r
 ![System Structure](./system_structure_202110_2.png)
 
 - Current Webpage since July 2021
-   - CDN: [Cloudflare CDN](https://www.cloudflare.com/ja-jp/)
-   - Hosting: [Gatsby Cloud](https://www.gatsbyjs.com/) [^2]
+   - Hosting: [Vercel](https://vercel.com/) [^2]
    - HTML Generator: [Gatsby](https://www.gatsbyjs.com/)
-   - Data Management: [GitHub](https://github.com/kuropen/kuropen) [^3]
+   - Data Management: [GitHub](https://github.com/kuropen/penguinone) [^3]
 
 [^2]: For some contents, Amazon S3 used for copyright protection.
 
