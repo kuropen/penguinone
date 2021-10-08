@@ -1,9 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import { useIntl, Link } from "gatsby-plugin-react-intl"
 import "../css/main.css"
 import PenguinImage from "../images/penguin.png"
+import { FiMenu, FiGlobe } from "react-icons/fi"
+import tw from "tailwind-styled-components"
+import styled from "styled-components"
+import BaseLocaleButton from "./localeButton"
 
 interface LayoutProps {
     pageTitle?: string | null
@@ -20,7 +24,9 @@ interface MenuContentShown {
     caption: string
 }
 
-const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageTitle, hideMenu, parent, pageDescription, pageType, pageImage, pageSlug}) => {
+const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageTitle, parent, pageDescription, pageType, pageImage, pageSlug}) => {
+    const intl = useIntl()
+
     const siteTitleQuery: GatsbyTypes.SiteTitleQuery = useStaticQuery<GatsbyTypes.SiteTitleQuery>(graphql`
 query SiteTitle {
   site {
@@ -43,6 +49,7 @@ query SiteTitle {
         siteDescription = siteTitleQuery.site?.siteMetadata?.siteDescription
 
     const fullTitle = pageTitle ? `${pageTitle} - ${title}` : title
+
     const originalMenuContent: MenuContentShown[] = menuContent ? menuContent.map(content => ({
         caption: content?.caption || '',
         path: content?.path || ''
@@ -55,18 +62,27 @@ query SiteTitle {
         }])
         menuContentShown = backMenuEntry.concat(originalMenuContent)
     }
-    const footerMenuElements = menuContentShown.map((content) => (
-        <span key={content.path}><Link to={content.path}>{content.caption}</Link></span>
+    const menuElements = menuContentShown.map((content) => (
+        <li key={content.path}><Link to={content.path}>{content.caption}</Link></li>
     ))
-    const footerMenu = hideMenu ? null : (
-        <nav className="footer-menu">
-            <hr />
-            <p>{footerMenuElements}</p>
-        </nav>
-    )
+
+    const MenuBtnContainer = tw.nav`dropdown dropdown-right mr-2 flex-none`
+    const MenuBtn = tw.button`btn btn-ghost`
+    const DropdownMenu = tw.ul`p-2 shadow menu dropdown-content bg-base-100 rounded-box w-48`
+
+    const Container = tw.div`container mx-auto px-2 md:px-0 drawer`
+    const AppBar = tw.header`navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-lg`
+    const SiteLogo = tw(styled.h1`
+        font-family: Orbitron, sans-serif;
+    `)`text-2xl flex-1`
+
+    const LocaleButton = tw(BaseLocaleButton)`btn btn-ghost`
+
+    const Footer = tw.footer`mt-2 p-2 bg-neutral text-neutral-content rounded-lg`
+
     return (
-        <div className="container mx-auto px-2 md:px-0">
-            <Helmet title={fullTitle} htmlAttributes={{lang: 'ja'}}>
+        <Container>
+            <Helmet title={fullTitle} htmlAttributes={{lang: intl.locale}}>
                 <link rel="shortcut icon" type="image/png" href={PenguinImage} />
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:image" content={pageImage ? pageImage : PenguinImage} />
@@ -75,21 +91,26 @@ query SiteTitle {
                 <meta property="og:title" content={pageTitle ? pageTitle : title} />
                 <meta property="og:description" content={pageDescription ? pageDescription : siteDescription} />
                 <meta property="og:type" content={pageType ? pageType : 'website'} />
-                <meta property="og:url" content={`${siteUrl}/${pageSlug}`} />
+                <meta property="og:url" content={`${siteUrl}/${pageSlug || ''}`} />
                 <meta property="og:image" content={pageImage ? pageImage : PenguinImage} />
             </Helmet>
-            <header className="text-center">
-                <h1 className="site-logo"><Link to="/">{title}</Link></h1>
-            </header>
+            <AppBar>
+                <MenuBtnContainer>
+                    <MenuBtn><FiMenu /></MenuBtn>
+                    <DropdownMenu>
+                        {menuElements}
+                    </DropdownMenu>
+                </MenuBtnContainer>
+                <SiteLogo><Link to="/">{title}</Link></SiteLogo>
+                <div><LocaleButton><FiGlobe /></LocaleButton></div>
+            </AppBar>
             <section className="main">
                 {children}
-                {footerMenu}
             </section>
-            <footer>
+            <Footer>
                 Copyright &copy; Kuropen.
-                Licensed under <a rel='license' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC-BY-NC-SA 4.0</a> unless otherwise noted.<br />
-            </footer>
-        </div>
+            </Footer>
+        </Container>
     )
 }
 

@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import tw from "tailwind-styled-components"
 
 const format = require('date-format')
 
@@ -31,11 +32,13 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     if (showDate) {
         dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
     }
+
+    const NavTagSection = tw.span`my-1 mr-2`
     let tagList = null
     if (tags) {
       const tagListInner = tags.map((tag) => {
         return (
-          <span key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></span>
+          <NavTagSection key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></NavTagSection>
         )
       })
       tagList = (

@@ -2,6 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import PostsIndex from "../components/postsIndex"
 
 const format = require('date-format')
 
@@ -23,11 +24,11 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIn
                 <div className="prose mx-auto">
                     <h1>{tag}</h1>
                 </div>
-                <nav className="posts-index">
+                <PostsIndex>
                     <ul>
                         {articleLinks}
                     </ul>
-                </nav>
+                </PostsIndex>
             </section>
         </Layout>
     )

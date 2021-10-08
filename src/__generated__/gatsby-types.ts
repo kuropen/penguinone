@@ -345,6 +345,8 @@ type SitePageContextIntl = {
 
 type SitePageContextIntlMessages = {
   readonly notTranslated: Maybe<Scalars['String']>;
+  readonly welcome: Maybe<Scalars['String']>;
+  readonly frontMessage: Maybe<Scalars['String']>;
 };
 
 type SitePlugin = Node & {
@@ -2597,6 +2599,8 @@ type SitePageContextIntlFilterInput = {
 
 type SitePageContextIntlMessagesFilterInput = {
   readonly notTranslated: Maybe<StringQueryOperatorInput>;
+  readonly welcome: Maybe<StringQueryOperatorInput>;
+  readonly frontMessage: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -2865,6 +2869,8 @@ type SitePageFieldsEnum =
   | 'context.intl.language'
   | 'context.intl.languages'
   | 'context.intl.messages.notTranslated'
+  | 'context.intl.messages.welcome'
+  | 'context.intl.messages.frontMessage'
   | 'context.intl.routed'
   | 'context.intl.originalPath'
   | 'context.intl.redirect'

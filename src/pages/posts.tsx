@@ -1,19 +1,23 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import { Link } from "gatsby-plugin-react-intl"
+import tw from "tailwind-styled-components"
+import PostsIndex from "../components/postsIndex"
 
 const format = require('date-format')
 
 const PostsPage: React.FC<PageProps<GatsbyTypes.PostsIndexQuery>> = ({data}) => {
     const {nodes} = data.allMarkdownRemark
 
+    const PostsIndexLink = tw(Link)`font-bold underline leading-7`
+
     const articleLinks = nodes.map((node) => {
         const dateObj = node.frontmatter?.date ? new Date(node.frontmatter.date) : new Date()
         const dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
 
         return (
-            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node?.frontmatter?.slug}`}>{node?.frontmatter?.title}</Link></li>
+            <li key={node.id}>{dateShown} -- <PostsIndexLink to={`/posts/${node?.frontmatter?.slug}`}>{node?.frontmatter?.title}</PostsIndexLink></li>
         )
     })
     return (
@@ -27,11 +31,11 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.PostsIndexQuery>> = ({data}) => 
                         <p><Link to="/tags">タグ一覧</Link></p>
                     </article>
                 </div>
-                <nav className="posts-index">
+                <PostsIndex>
                     <ul>
                         {articleLinks}
                     </ul>
-                </nav>
+                </PostsIndex>
             </section>
         </Layout>
     )
