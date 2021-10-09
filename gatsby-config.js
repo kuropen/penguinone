@@ -8,20 +8,27 @@ module.exports = {
       {
         path: '/about',
         caption: 'where is this',
-        captionTranslate: 'about',
         back: false,
       },
       {
-        path: '/gallery',
-        caption: 'my picture',
-        captionTranslate: 'gallery',
+        path: '/profile',
+        caption: 'who I am',
+        back: false,
+      },
+      {
+        path: '/posts',
+        caption: 'my note',
         back: false,
       },
       {
         path: '/projects',
         caption: 'my project',
-        captionTranslate: 'project',
         back: false,
+      },
+      {
+        path: '/',
+        caption: 'main',
+        back: true,
       },
     ]
   },
@@ -73,8 +80,17 @@ module.exports = {
     "gatsby-plugin-catch-links",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-robots-txt",
-    "gatsby-plugin-typegen",
+    {
+      resolve: "gatsby-plugin-typegen",
+      options: {
+        outputPath: "src/types/generated-gatsby-types.d.ts",
+        emitSchema: {
+          "./schema.graphql": true,
+        }
+      }
+    },
     "gatsby-plugin-typescript",
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-zeit-now',
       options: {

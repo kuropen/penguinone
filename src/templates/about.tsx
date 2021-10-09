@@ -4,10 +4,9 @@ import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 import tw from "tailwind-styled-components"
+import { PageWithListLayout, TypePageListBox, TypePageList, TypePageListTitle, Divider, SectionBox, generateTypePageList } from "../components/subPageLayout"
 
-const format = require('date-format')
-
-const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
+const mdPageAbout: React.FC<PageProps<GatsbyTypes.MakeAboutPageQuery>> = ({data}) => {
     let doc = data.markdownRemark
     let fallbacked = false
     if (!doc) {
@@ -21,57 +20,56 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     if (!frontmatter) {
       return null
     }
-    const {type, title, date, showDate, slug, tags, lang} = frontmatter
+    const {title, slug, lang} = frontmatter
     if (!data.site?.siteMetadata) {
       return null
     }
-    const siteUrl = data.site?.siteMetadata?.siteUrl || ''
     const ogpBucket = data.site?.siteMetadata?.ogpBucket || ''
-    const dateObj = date ? new Date(date) : new Date()
-    let dateShown = null
-    if (showDate) {
-        dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
-    }
-
-    const NavTagSection = tw.span`my-1 mr-2`
-    let tagList = null
-    if (tags) {
-      const tagListInner = tags.map((tag) => {
-        return (
-          <NavTagSection key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></NavTagSection>
-        )
-      })
-      tagList = (
-        <nav className="tags">{tagListInner}</nav>
-      )
-    }
 
     let pageImage = `${ogpBucket}/${slug}_${lang}.png`
 
-    let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
-    
     let fallbackInfo = null
     if (fallbacked) {
-      fallbackInfo = (<div className="border rounded m-2 p-2 bg-yellow-300 text-black mb-2"><FormattedMessage id="notTranslated" /></div>)
+      const FallbackAlert = tw.div`alert alert-info`
+      fallbackInfo = (<FallbackAlert><FormattedMessage id="notTranslated" /></FallbackAlert>)
     }
 
+    const typePages = generateTypePageList(data.allMarkdownRemark.nodes, slug || '')
+
     return (
-        <Layout pageTitle={title} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
-            <section className="prose mx-auto" key={id}>
-                {fallbackInfo}
-                <h1>{title}</h1>
-                {dateShown}
-                {tagList}
-                <SRLWrapper>
-                  <article dangerouslySetInnerHTML={{__html: html || ''}} />
-                </SRLWrapper>
-            </section>
+        <Layout pageTitle={title} pageDescription={excerpt} pageSlug={slug} pageImage={pageImage}>
+          <PageWithListLayout>
+            <TypePageListBox>
+              <TypePageList>
+                <TypePageListTitle><span><FormattedMessage id="siteinfo" /></span></TypePageListTitle>
+                {typePages}
+              </TypePageList>
+            </TypePageListBox>
+            <Divider />
+            <SectionBox key={id}>
+              <h2>{title}</h2>
+              {fallbackInfo}
+              <SRLWrapper>
+                <article dangerouslySetInnerHTML={{__html: html || ''}} />
+              </SRLWrapper>
+            </SectionBox>
+          </PageWithListLayout>
         </Layout>
     )
 }
 
 export const query = graphql`
-  query MakeMDPage ($slug: String!, $language: String!) {
+  query MakeAboutPage ($slug: String!, $language: String!) {
+    allMarkdownRemark(
+      filter: {frontmatter: {type: {eq: "about"}, lang: {eq: $language}}}
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          title
+        }
+      }
+    }
     markdownRemark(frontmatter: {slug: {eq: $slug}, lang: {eq: $language}}) {
       id
       frontmatter {
@@ -125,4 +123,4 @@ export const query = graphql`
   }
 `
 
-export default mdPage
+export default mdPageAbout

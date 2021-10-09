@@ -1,7 +1,7 @@
 ---
 title: "About ActivityPub accounts"
 date: 2021-04-20T14:25:46.958Z
-type: fixed
+type: profile
 lang: en
 slug: activitypub
 ---
@@ -14,3 +14,4 @@ Kuropen owns following ActivityPub accounts:
 - Account on Misskey.io was [destroyed due to server failure](/en/posts/20211005-notice-regarding-misskey).
 
 Please refer to [ActivityPub tag of blog](/tags/activitypub) for notice regarding ActivityPub accounts.
+(Note that the blog is in Japanese only.)

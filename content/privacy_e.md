@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 date: 2021-09-15T00:28:00+09:00
-type: fixed
+type: about
 lang: en
 slug: privacy
 ---

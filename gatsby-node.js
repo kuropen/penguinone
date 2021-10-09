@@ -1,4 +1,6 @@
-const fs = require('fs/promises')
+const fs = require('fs')
+const fsPromises = require('fs/promises')
+const path = require('path')
 
 exports.createPages = async function ({ actions, graphql }) {
   const { createRedirect, createPage } = actions
@@ -32,9 +34,14 @@ exports.createPages = async function ({ actions, graphql }) {
         toPath: `/posts/${slug}`
       })
     }
+    let typeTemplate = `./src/templates/${type}.tsx`
+    const isTypeTemplateAvailable = fs.existsSync(path.resolve(typeTemplate))
+    if (!isTypeTemplateAvailable) {
+      typeTemplate = `./src/templates/md_page.tsx`
+    }
     createPage({
       path: fullPath,
-      component: require.resolve(`./src/templates/md_page.tsx`),
+      component: require.resolve(typeTemplate),
       context: { slug: node.frontmatter.slug },
     })
     if (tags) {
@@ -50,7 +57,7 @@ exports.createPages = async function ({ actions, graphql }) {
     createRedirect({fromPath: `/category/${tag}`, toPath: `/tags/${tag}`})
   })
 
-  const prismicIdJson = await fs.readFile('./prismic_id.json')
+  const prismicIdJson = await fsPromises.readFile('./prismic_id.json')
   const prismicIds = JSON.parse(prismicIdJson)
   for (const id in prismicIds) {
     createRedirect({

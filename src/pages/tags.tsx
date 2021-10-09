@@ -1,7 +1,8 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import { Link } from "gatsby-plugin-react-intl"
+import PostsIndex from "../components/postsIndex"
 
 const PostsPage: React.FC<PageProps<GatsbyTypes.TagListQuery>> = ({data}) => {
     const {edges} = data.allSitePage
@@ -17,11 +18,11 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagListQuery>> = ({data}) => {
                 <div className="prose mx-auto">
                     <h1>タグ一覧</h1>
                 </div>
-                <nav className="posts-index">
+                <PostsIndex>
                     <ul>
                         {tagLinks}
                     </ul>
-                </nav>
+                </PostsIndex>
             </section>
         </Layout>
     )

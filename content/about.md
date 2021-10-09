@@ -1,7 +1,7 @@
 ---
 title: "このサイトについて"
 date: 2021-07-17T15:36:09+09:00
-type: fixed
+type: about
 lang: ja
 slug: about
 ---
@@ -63,6 +63,8 @@ slug: about
 
 ![プロジェクト含む公開システムの構成図](./system_structure_202110_2.png)
 
+※Gatsby Cloud時代のものが一部含まれています。書き直し予定
+
 - 2021年7月リリースの新Webページ (2021年9月21日現在)
    - ホスティング環境: [Vercel](https://vercel.com/) [^2]
    - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/)
@@ -79,9 +81,11 @@ slug: about
 
 - Webフォント
    - [Orbitron](https://www.theleagueofmoveabletype.com/orbitron)
-   - [Noto](https://fonts.google.com/noto)
    - [IBM Plex Sans JP](https://github.com/IBM/plex) [^4]
-- [MUI](https://mui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+   - [aspect-ratio plugin](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
+   - [typography plugin](https://github.com/tailwindlabs/tailwindcss-typography)
+   - [daisyUI](https://daisyui.com/)
 - [Simple React Lightbox](https://simple-react-lightbox.dev/)
 
 [^4]: ページ表示には使用せず、SNSなどで共有された際に表示されるOGPイメージの生成用に使用しています。

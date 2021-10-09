@@ -1,19 +1,18 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
-import ArticleList from "../components/articleList"
+import BlogListLayout from "../components/blogListLayout"
 
 const format = require('date-format')
 
 const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIndexQueryVariables>> = ({data, pageContext}) => {
-    const intl = useIntl()
-    const tag: string = pageContext.tag || ''
-    const pageTitle = `${intl.formatMessage({id: 'tag'})}: ${tag}`
+    const tag: string = pageContext.tag
+    const {nodes} = data.allMarkdownRemark
 
     return (
-        <Layout pageTitle={pageTitle} parent="/tags">
-            <ArticleList title={pageTitle} data={data} />
+        <Layout pageTitle={tag} parent="/tags">
+            {/* @ts-ignore */}
+            <BlogListLayout tagData={data.allSitePage.edges} blogData={nodes} currentPath={`tags/${tag}`} />
         </Layout>
     )
 }
@@ -21,24 +20,31 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIn
 export default PostsPage
 
 export const query = graphql`
-query TagIndex($language: String, $tag: String) {
-  allMarkdownRemark(
-    sort: {fields: frontmatter___date, order: DESC}
-    filter: {frontmatter: {tags: {in: [$tag]}, type: {eq: "posts"}, lang: {eq: $language}}}
-  ) {
-    nodes {
-      frontmatter {
-        slug
-        title
-        date
-        image {
-	        childImageSharp {
-	          gatsbyImageData(aspectRatio: 1.9, transformOptions: {fit: CONTAIN})
-	        }
-	    }
-        lang
-      }
+query TagIndex ($tag: String!) {
+    allMarkdownRemark(
+      sort: {fields: frontmatter___date, order: DESC}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
+    ) {
+        nodes {
+            id
+            frontmatter {
+                slug
+                title
+                date
+                image {
+                    childImageSharp {
+                        gatsbyImageData
+                    }
+                }
+            }
+        }
     }
-  }
+    allSitePage(filter: {path: {regex: "/^\\/tags/"}}) {
+        edges {
+            node {
+                path
+            }
+        }
+    }
 }
 `

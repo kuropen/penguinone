@@ -3,11 +3,15 @@ import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
+import styled from "styled-components"
 import tw from "tailwind-styled-components"
+import BlogLayout from "../components/blogLayout"
+import { getSrc } from "gatsby-plugin-image"
+import { FiCalendar, FiTag } from "react-icons/fi"
 
 const format = require('date-format')
 
-const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
+const mdPage: React.FC<PageProps<GatsbyTypes.MakePostsPageQuery>> = ({data}) => {
     let doc = data.markdownRemark
     let fallbacked = false
     if (!doc) {
@@ -33,16 +37,18 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
         dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
     }
 
+    const NavTagLink = tw(Link)`link link-hover`
     const NavTagSection = tw.span`my-1 mr-2`
+    const NavTag = tw.nav`inline`
     let tagList = null
     if (tags) {
       const tagListInner = tags.map((tag) => {
         return (
-          <NavTagSection key={tag}><Link to={`/tags/${tag}`}>{tag}</Link></NavTagSection>
+          <NavTagSection key={tag}><NavTagLink to={`/tags/${tag}`}>{tag}</NavTagLink></NavTagSection>
         )
       })
       tagList = (
-        <nav className="tags">{tagListInner}</nav>
+        <NavTag>{tagListInner}</NavTag>
       )
     }
 
@@ -52,26 +58,51 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     
     let fallbackInfo = null
     if (fallbacked) {
-      fallbackInfo = (<div className="border rounded m-2 p-2 bg-yellow-300 text-black mb-2"><FormattedMessage id="notTranslated" /></div>)
+      fallbackInfo = (<div className="alert alert-info"><FormattedMessage id="notesLocale" /></div>)
     }
+
+    // @ts-ignore
+    const coverImage = doc.frontmatter?.image ? getSrc(doc.frontmatter.image) : null
+    const BaseInfobox = coverImage ? styled.section`
+      background-image: url(${coverImage}); 
+    ` : tw(styled.section`
+      background-image: none;
+    `)`bg-neutral`
+    const InfoBox = tw(BaseInfobox)`hero text-neutral-content rounded-lg aspect-w-15 aspect-h-8 shadow-xl`
+    const InfoBoxOverlay = tw.div`hero-overlay rounded-lg bg-opacity-70`
+    const InfoBoxContent = tw.div`hero-content rounded-lg flex-col items-stretch justify-end filter drop-shadow-lg`
+    const InfoElementBox = tw.div`flex flex-row items-center`
+    const InfoElementIcon = tw.span`mr-2`
+    const ArticleTitle = tw.h2`text-2xl font-bold`
+    const ArticleWrapper = tw.div`p-2 md:p-4 rounded-lg shadow-xl`
+    const Article = tw.article`prose mx-auto`
 
     return (
         <Layout pageTitle={title} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
-            <section className="prose mx-auto" key={id}>
-                {fallbackInfo}
-                <h1>{title}</h1>
-                {dateShown}
-                {tagList}
-                <SRLWrapper>
-                  <article dangerouslySetInnerHTML={{__html: html || ''}} />
-                </SRLWrapper>
-            </section>
+          <BlogLayout tagData={data.allSitePage.edges}>
+            <InfoBox>
+              <InfoBoxOverlay />
+              <InfoBoxContent>
+                <ArticleTitle>{title}</ArticleTitle>
+                <aside>
+                  <InfoElementBox><InfoElementIcon><FiCalendar /></InfoElementIcon>{dateShown}</InfoElementBox>
+                  <InfoElementBox><InfoElementIcon><FiTag /></InfoElementIcon>{tagList}</InfoElementBox>
+                </aside>
+              </InfoBoxContent>
+            </InfoBox>
+            {fallbackInfo}
+            <ArticleWrapper key={id}>
+              <SRLWrapper>
+                <Article dangerouslySetInnerHTML={{__html: html || ''}} />
+              </SRLWrapper>
+            </ArticleWrapper>
+          </BlogLayout>
         </Layout>
     )
 }
 
 export const query = graphql`
-  query MakeMDPage ($slug: String!, $language: String!) {
+  query MakePostsPage ($slug: String!, $language: String!) {
     markdownRemark(frontmatter: {slug: {eq: $slug}, lang: {eq: $language}}) {
       id
       frontmatter {
@@ -82,9 +113,6 @@ export const query = graphql`
         title
         image {
           childImageSharp {
-            fixed {
-              src
-            }
             gatsbyImageData(layout: FIXED, width: 590)
           }
         }
@@ -104,9 +132,6 @@ export const query = graphql`
         title
         image {
           childImageSharp {
-            fixed {
-              src
-            }
             gatsbyImageData(layout: FIXED, width: 590)
           }
         }
@@ -121,6 +146,13 @@ export const query = graphql`
         siteUrl
         ogpBucket
       }
+    }
+    allSitePage(filter: {path: {regex: "/^\\/tags/"}}) {
+        edges {
+            node {
+                path
+            }
+        }
     }
   }
 `

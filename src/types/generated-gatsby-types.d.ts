@@ -261,8 +261,6 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -291,7 +289,6 @@ type SiteSiteMetadata = {
 type SiteSiteMetadataMenuContent = {
   readonly path: Maybe<Scalars['String']>;
   readonly caption: Maybe<Scalars['String']>;
-  readonly captionTranslate: Maybe<Scalars['String']>;
   readonly back: Maybe<Scalars['Boolean']>;
 };
 
@@ -346,28 +343,13 @@ type SitePageContextIntl = {
 
 type SitePageContextIntlMessages = {
   readonly notTranslated: Maybe<Scalars['String']>;
-  readonly oppositeLanguage: Maybe<Scalars['String']>;
-  readonly oppositeLanguageCode: Maybe<Scalars['String']>;
+  readonly welcome: Maybe<Scalars['String']>;
+  readonly frontMessage: Maybe<Scalars['String']>;
+  readonly siteinfo: Maybe<Scalars['String']>;
   readonly profile: Maybe<Scalars['String']>;
-  readonly hometown: Maybe<Scalars['String']>;
-  readonly saitama: Maybe<Scalars['String']>;
-  readonly aizuwakamatsu: Maybe<Scalars['String']>;
-  readonly joinGlue: Maybe<Scalars['String']>;
-  readonly occupation: Maybe<Scalars['String']>;
-  readonly webProgrammer: Maybe<Scalars['String']>;
-  readonly specialized: Maybe<Scalars['String']>;
-  readonly detailedProfile: Maybe<Scalars['String']>;
-  readonly returnArticleList: Maybe<Scalars['String']>;
-  readonly returnPreviousPage: Maybe<Scalars['String']>;
-  readonly blogArticles: Maybe<Scalars['String']>;
-  readonly olderArticles: Maybe<Scalars['String']>;
-  readonly tag: Maybe<Scalars['String']>;
-  readonly publishedDate: Maybe<Scalars['String']>;
-  readonly ccLicense: Maybe<Scalars['String']>;
-  readonly about: Maybe<Scalars['String']>;
-  readonly privacy: Maybe<Scalars['String']>;
-  readonly gallery: Maybe<Scalars['String']>;
-  readonly project: Maybe<Scalars['String']>;
+  readonly notesLocale: Maybe<Scalars['String']>;
+  readonly tagList: Maybe<Scalars['String']>;
+  readonly allArticles: Maybe<Scalars['String']>;
 };
 
 type SitePlugin = Node & {
@@ -412,6 +394,8 @@ type SitePluginPluginOptions = {
   readonly createLinkInHead: Maybe<Scalars['Boolean']>;
   readonly entryLimit: Maybe<Scalars['Int']>;
   readonly query: Maybe<Scalars['String']>;
+  readonly outputPath: Maybe<Scalars['String']>;
+  readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>;
   readonly isTSX: Maybe<Scalars['Boolean']>;
   readonly jsxPragma: Maybe<Scalars['String']>;
   readonly allExtensions: Maybe<Scalars['Boolean']>;
@@ -448,6 +432,10 @@ type SitePluginPluginOptionsPluginsPluginOptions = {
   readonly decoding: Maybe<Scalars['String']>;
   readonly disableBgImageOnAlpha: Maybe<Scalars['Boolean']>;
   readonly disableBgImage: Maybe<Scalars['Boolean']>;
+};
+
+type SitePluginPluginOptionsEmitSchema = {
+  readonly _xschemaxgraphql: Maybe<Scalars['Boolean']>;
 };
 
 type SitePluginPackageJson = {
@@ -492,6 +480,25 @@ type SiteBuildMetadata_buildTimeArgs = {
   difference: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
 };
+
+type GatsbyImageFormat =
+  | 'NO_CHANGE'
+  | 'auto'
+  | 'jpg'
+  | 'png'
+  | 'webp'
+  | 'avif';
+
+type GatsbyImageLayout =
+  | 'fixed'
+  | 'fullWidth'
+  | 'constrained';
+
+type GatsbyImagePlaceholder =
+  | 'dominantColor'
+  | 'tracedSVG'
+  | 'blurred'
+  | 'none';
 
 type ImageFormat =
   | 'NO_CHANGE'
@@ -815,10 +822,9 @@ type MarkdownRemark_tableOfContentsArgs = {
 type MarkdownRemarkFrontmatter = {
   readonly title: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
+  readonly type: Maybe<Scalars['String']>;
   readonly lang: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
-  readonly type: Maybe<Scalars['String']>;
-  readonly parent: Maybe<Scalars['String']>;
   readonly showDate: Maybe<Scalars['Boolean']>;
   readonly draft: Maybe<Scalars['Boolean']>;
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -961,8 +967,6 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -1282,10 +1286,9 @@ type MarkdownRemarkFilterInput = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
+  readonly type: Maybe<StringQueryOperatorInput>;
   readonly lang: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly type: Maybe<StringQueryOperatorInput>;
-  readonly parent: Maybe<StringQueryOperatorInput>;
   readonly showDate: Maybe<BooleanQueryOperatorInput>;
   readonly draft: Maybe<BooleanQueryOperatorInput>;
   readonly tags: Maybe<StringQueryOperatorInput>;
@@ -1588,10 +1591,9 @@ type FileFieldsEnum =
   | 'childrenMarkdownRemark.id'
   | 'childrenMarkdownRemark.frontmatter.title'
   | 'childrenMarkdownRemark.frontmatter.date'
+  | 'childrenMarkdownRemark.frontmatter.type'
   | 'childrenMarkdownRemark.frontmatter.lang'
   | 'childrenMarkdownRemark.frontmatter.slug'
-  | 'childrenMarkdownRemark.frontmatter.type'
-  | 'childrenMarkdownRemark.frontmatter.parent'
   | 'childrenMarkdownRemark.frontmatter.showDate'
   | 'childrenMarkdownRemark.frontmatter.draft'
   | 'childrenMarkdownRemark.frontmatter.tags'
@@ -1688,10 +1690,9 @@ type FileFieldsEnum =
   | 'childMarkdownRemark.id'
   | 'childMarkdownRemark.frontmatter.title'
   | 'childMarkdownRemark.frontmatter.date'
+  | 'childMarkdownRemark.frontmatter.type'
   | 'childMarkdownRemark.frontmatter.lang'
   | 'childMarkdownRemark.frontmatter.slug'
-  | 'childMarkdownRemark.frontmatter.type'
-  | 'childMarkdownRemark.frontmatter.parent'
   | 'childMarkdownRemark.frontmatter.showDate'
   | 'childMarkdownRemark.frontmatter.draft'
   | 'childMarkdownRemark.frontmatter.tags'
@@ -2190,7 +2191,6 @@ type SiteSiteMetadataMenuContentFilterListInput = {
 type SiteSiteMetadataMenuContentFilterInput = {
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly caption: Maybe<StringQueryOperatorInput>;
-  readonly captionTranslate: Maybe<StringQueryOperatorInput>;
   readonly back: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -2249,10 +2249,7 @@ type SiteFieldsEnum =
   | 'siteMetadata.menuContent'
   | 'siteMetadata.menuContent.path'
   | 'siteMetadata.menuContent.caption'
-  | 'siteMetadata.menuContent.captionTranslate'
   | 'siteMetadata.menuContent.back'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2386,8 +2383,6 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -2622,28 +2617,13 @@ type SitePageContextIntlFilterInput = {
 
 type SitePageContextIntlMessagesFilterInput = {
   readonly notTranslated: Maybe<StringQueryOperatorInput>;
-  readonly oppositeLanguage: Maybe<StringQueryOperatorInput>;
-  readonly oppositeLanguageCode: Maybe<StringQueryOperatorInput>;
+  readonly welcome: Maybe<StringQueryOperatorInput>;
+  readonly frontMessage: Maybe<StringQueryOperatorInput>;
+  readonly siteinfo: Maybe<StringQueryOperatorInput>;
   readonly profile: Maybe<StringQueryOperatorInput>;
-  readonly hometown: Maybe<StringQueryOperatorInput>;
-  readonly saitama: Maybe<StringQueryOperatorInput>;
-  readonly aizuwakamatsu: Maybe<StringQueryOperatorInput>;
-  readonly joinGlue: Maybe<StringQueryOperatorInput>;
-  readonly occupation: Maybe<StringQueryOperatorInput>;
-  readonly webProgrammer: Maybe<StringQueryOperatorInput>;
-  readonly specialized: Maybe<StringQueryOperatorInput>;
-  readonly detailedProfile: Maybe<StringQueryOperatorInput>;
-  readonly returnArticleList: Maybe<StringQueryOperatorInput>;
-  readonly returnPreviousPage: Maybe<StringQueryOperatorInput>;
-  readonly blogArticles: Maybe<StringQueryOperatorInput>;
-  readonly olderArticles: Maybe<StringQueryOperatorInput>;
-  readonly tag: Maybe<StringQueryOperatorInput>;
-  readonly publishedDate: Maybe<StringQueryOperatorInput>;
-  readonly ccLicense: Maybe<StringQueryOperatorInput>;
-  readonly about: Maybe<StringQueryOperatorInput>;
-  readonly privacy: Maybe<StringQueryOperatorInput>;
-  readonly gallery: Maybe<StringQueryOperatorInput>;
-  readonly project: Maybe<StringQueryOperatorInput>;
+  readonly notesLocale: Maybe<StringQueryOperatorInput>;
+  readonly tagList: Maybe<StringQueryOperatorInput>;
+  readonly allArticles: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -2688,6 +2668,8 @@ type SitePluginPluginOptionsFilterInput = {
   readonly createLinkInHead: Maybe<BooleanQueryOperatorInput>;
   readonly entryLimit: Maybe<IntQueryOperatorInput>;
   readonly query: Maybe<StringQueryOperatorInput>;
+  readonly outputPath: Maybe<StringQueryOperatorInput>;
+  readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>;
   readonly isTSX: Maybe<BooleanQueryOperatorInput>;
   readonly jsxPragma: Maybe<StringQueryOperatorInput>;
   readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
@@ -2728,6 +2710,10 @@ type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   readonly decoding: Maybe<StringQueryOperatorInput>;
   readonly disableBgImageOnAlpha: Maybe<BooleanQueryOperatorInput>;
   readonly disableBgImage: Maybe<BooleanQueryOperatorInput>;
+};
+
+type SitePluginPluginOptionsEmitSchemaFilterInput = {
+  readonly _xschemaxgraphql: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SitePluginPackageJsonFilterInput = {
@@ -2912,28 +2898,13 @@ type SitePageFieldsEnum =
   | 'context.intl.language'
   | 'context.intl.languages'
   | 'context.intl.messages.notTranslated'
-  | 'context.intl.messages.oppositeLanguage'
-  | 'context.intl.messages.oppositeLanguageCode'
+  | 'context.intl.messages.welcome'
+  | 'context.intl.messages.frontMessage'
+  | 'context.intl.messages.siteinfo'
   | 'context.intl.messages.profile'
-  | 'context.intl.messages.hometown'
-  | 'context.intl.messages.saitama'
-  | 'context.intl.messages.aizuwakamatsu'
-  | 'context.intl.messages.joinGlue'
-  | 'context.intl.messages.occupation'
-  | 'context.intl.messages.webProgrammer'
-  | 'context.intl.messages.specialized'
-  | 'context.intl.messages.detailedProfile'
-  | 'context.intl.messages.returnArticleList'
-  | 'context.intl.messages.returnPreviousPage'
-  | 'context.intl.messages.blogArticles'
-  | 'context.intl.messages.olderArticles'
-  | 'context.intl.messages.tag'
-  | 'context.intl.messages.publishedDate'
-  | 'context.intl.messages.ccLicense'
-  | 'context.intl.messages.about'
-  | 'context.intl.messages.privacy'
-  | 'context.intl.messages.gallery'
-  | 'context.intl.messages.project'
+  | 'context.intl.messages.notesLocale'
+  | 'context.intl.messages.tagList'
+  | 'context.intl.messages.allArticles'
   | 'context.intl.routed'
   | 'context.intl.originalPath'
   | 'context.intl.redirect'
@@ -2979,6 +2950,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.createLinkInHead'
   | 'pluginCreator.pluginOptions.entryLimit'
   | 'pluginCreator.pluginOptions.query'
+  | 'pluginCreator.pluginOptions.outputPath'
+  | 'pluginCreator.pluginOptions.emitSchema._xschemaxgraphql'
   | 'pluginCreator.pluginOptions.isTSX'
   | 'pluginCreator.pluginOptions.jsxPragma'
   | 'pluginCreator.pluginOptions.allExtensions'
@@ -3203,6 +3176,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.createLinkInHead'
   | 'pluginOptions.entryLimit'
   | 'pluginOptions.query'
+  | 'pluginOptions.outputPath'
+  | 'pluginOptions.emitSchema._xschemaxgraphql'
   | 'pluginOptions.isTSX'
   | 'pluginOptions.jsxPragma'
   | 'pluginOptions.allExtensions'
@@ -3809,10 +3784,9 @@ type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter.title'
   | 'frontmatter.date'
+  | 'frontmatter.type'
   | 'frontmatter.lang'
   | 'frontmatter.slug'
-  | 'frontmatter.type'
-  | 'frontmatter.parent'
   | 'frontmatter.showDate'
   | 'frontmatter.draft'
   | 'frontmatter.tags'
@@ -4041,52 +4015,24 @@ type MarkdownRemarkSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type TagListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type TagListQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
-
 type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type SiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'siteDescription'>
-      & { readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'captionTranslate' | 'path'>>>> }
+      & { readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'caption' | 'path'>>>> }
     )> }> };
 
-type PostsIndexQueryVariables = Exact<{
-  language: Maybe<Scalars['String']>;
-}>;
+type PostsIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PostsIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
       Pick<MarkdownRemark, 'id'>
       & { readonly frontmatter: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
+        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date'>
         & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
       )> }
-    )> } };
-
-type IndexQueryVariables = Exact<{
-  language: Maybe<Scalars['String']>;
-}>;
-
-
-type IndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
-        & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
-      )> }> } };
-
-type TagIndexQueryVariables = Exact<{
-  language: Maybe<Scalars['String']>;
-  tag: Maybe<Scalars['String']>;
-}>;
-
-
-type TagIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date' | 'lang'>
-        & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
-      )> }> } };
+    )> }, readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
 
 type MakeMDPageQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -4097,7 +4043,7 @@ type MakeMDPageQueryVariables = Exact<{
 type MakeMDPageQuery = { readonly markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
     & { readonly frontmatter: Maybe<(
-      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'parent' | 'tags' | 'lang'>
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
       & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
           Pick<ImageSharp, 'gatsbyImageData'>
           & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
@@ -4106,13 +4052,52 @@ type MakeMDPageQuery = { readonly markdownRemark: Maybe<(
   )>, readonly fallbackMd: Maybe<(
     Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
     & { readonly frontmatter: Maybe<(
-      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'parent' | 'tags' | 'lang'>
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
       & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
           Pick<ImageSharp, 'gatsbyImageData'>
           & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
         )> }> }
     )> }
   )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'ogpBucket'>> }> };
+
+type MakeAboutPageQueryVariables = Exact<{
+  slug: Scalars['String'];
+  language: Scalars['String'];
+}>;
+
+
+type MakeAboutPageQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug' | 'title'>> }> }, readonly markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
+          Pick<ImageSharp, 'gatsbyImageData'>
+          & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
+        )> }> }
+    )> }
+  )>, readonly fallbackMd: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
+          Pick<ImageSharp, 'gatsbyImageData'>
+          & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
+        )> }> }
+    )> }
+  )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'ogpBucket'>> }> };
+
+type TagIndexQueryVariables = Exact<{
+  tag: Scalars['String'];
+}>;
+
+
+type TagIndexQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<(
+      Pick<MarkdownRemark, 'id'>
+      & { readonly frontmatter: Maybe<(
+        Pick<MarkdownRemarkFrontmatter, 'slug' | 'title' | 'date'>
+        & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+      )> }
+    )> }, readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -4140,9 +4125,60 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type MakePostsPageQueryVariables = Exact<{
+  slug: Scalars['String'];
+  language: Scalars['String'];
+}>;
 
 
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+type MakePostsPageQuery = { readonly markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+    )> }
+  )>, readonly fallbackMd: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> }
+    )> }
+  )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'ogpBucket'>> }>, readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
+
+type TagListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type TagListQuery = { readonly allSitePage: { readonly edges: ReadonlyArray<{ readonly node: Pick<SitePage, 'path'> }> } };
+
+type IndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type IndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menuContent: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenuContent, 'caption' | 'path' | 'back'>>>> }> }> };
+
+type MakeProfilePageQueryVariables = Exact<{
+  slug: Scalars['String'];
+  language: Scalars['String'];
+}>;
+
+
+type MakeProfilePageQuery = { readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug' | 'title'>> }> }, readonly markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
+          Pick<ImageSharp, 'gatsbyImageData'>
+          & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
+        )> }> }
+    )> }
+  )>, readonly fallbackMd: Maybe<(
+    Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
+    & { readonly frontmatter: Maybe<(
+      Pick<MarkdownRemarkFrontmatter, 'slug' | 'type' | 'date' | 'showDate' | 'title' | 'tags' | 'lang'>
+      & { readonly image: Maybe<{ readonly childImageSharp: Maybe<(
+          Pick<ImageSharp, 'gatsbyImageData'>
+          & { readonly fixed: Maybe<Pick<ImageSharpFixed, 'src'>> }
+        )> }> }
+    )> }
+  )>, readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'ogpBucket'>> }> };
 
 }

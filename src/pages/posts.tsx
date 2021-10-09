@@ -1,16 +1,17 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
-import ArticleList from "../components/articleList"
+import BlogListLayout from "../components/blogListLayout"
 
 const format = require('date-format')
 
 const PostsPage: React.FC<PageProps<GatsbyTypes.PostsIndexQuery>> = ({data}) => {
-    const intl = useIntl()
+    const {nodes} = data.allMarkdownRemark
+
     return (
-        <Layout pageTitle={intl.formatMessage({id: 'blogArticles'})}>
-            <ArticleList data={data} />
+        <Layout pageTitle="My Note">
+            {/* @ts-ignore */}
+            <BlogListLayout tagData={data.allSitePage.edges} blogData={nodes} currentPath="posts" />
         </Layout>
     )
 }
@@ -18,25 +19,31 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.PostsIndexQuery>> = ({data}) => 
 export default PostsPage
 
 export const query = graphql`
-query PostsIndex($language: String) {
+query PostsIndex {
     allMarkdownRemark(
       sort: {fields: frontmatter___date, order: DESC}
-      filter: {frontmatter: {type: {eq: "posts"}, lang: {eq: $language}}}
+      filter: {frontmatter: {type: {eq: "posts"}}}
     ) {
-    nodes {
-      id
-      frontmatter {
-        slug
-        title
-        date
-        image {
-          childImageSharp {
-            gatsbyImageData(aspectRatio: 1.9, transformOptions: {fit: CONTAIN})
-          }
+        nodes {
+            id
+            frontmatter {
+                slug
+                title
+                date
+                image {
+                    childImageSharp {
+                        gatsbyImageData
+                    }
+                }
+            }
         }
-        lang
-      }
     }
-  }
+    allSitePage(filter: {path: {regex: "/^\\/tags/"}}) {
+        edges {
+            node {
+                path
+            }
+        }
+    }
 }
 `

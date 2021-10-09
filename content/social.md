@@ -1,7 +1,7 @@
 ---
 title: "SNSポリシー"
 date: 2021-07-21T19:02:00+09:00
-type: fixed
+type: profile
 lang: ja
 slug: social
 ---

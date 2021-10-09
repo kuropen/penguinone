@@ -1,7 +1,7 @@
 ---
 title: "ActivityPubについて"
 date: 2021-04-20T14:25:46.958Z
-type: fixed
+type: profile
 lang: ja
 slug: activitypub
 ---
