@@ -71,7 +71,7 @@ query SiteTitle {
     const DropdownMenu = tw.ul`p-2 shadow menu dropdown-content bg-base-100 rounded-box w-48`
 
     const Container = tw.div`container mx-auto px-2 md:px-0 drawer`
-    const AppBar = tw.header`navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-lg`
+    const AppBar = tw.header`navbar mt-0 mb-2 shadow-lg bg-neutral text-neutral-content rounded-b-lg`
     const SiteLogo = tw(styled.h1`
         font-family: Orbitron, sans-serif;
     `)`text-2xl flex-1`

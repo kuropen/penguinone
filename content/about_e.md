@@ -1,7 +1,7 @@
 ---
 title: "About this website"
 date: 2021-07-17T15:36:09+09:00
-type: fixed
+type: about
 lang: en
 slug: about
 ---

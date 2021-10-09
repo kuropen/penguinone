@@ -21,11 +21,6 @@ module.exports = {
         back: false,
       },
       {
-        path: '/gallery',
-        caption: 'my picture',
-        back: false,
-      },
-      {
         path: '/projects',
         caption: 'my project',
         back: false,

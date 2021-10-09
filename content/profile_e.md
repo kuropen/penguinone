@@ -1,7 +1,7 @@
 ---
-title: "Profile"
+title: "Self Introduction"
 date: 2021-07-17T15:36:09+09:00
-type: fixed
+type: profile
 lang: en
 slug: profile
 ---

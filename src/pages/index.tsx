@@ -9,7 +9,7 @@ import tw from "tailwind-styled-components"
 const IndexPage: React.FC<PageProps<GatsbyTypes.IndexQuery>> = ({data}) => {
   const Hero = tw(styled.section`
     min-height: calc(100vh - 9em)
-  `)`hero bg-gradient-to-br from-indigo-800 to-blue-700 text-white rounded-lg`
+  `)`hero rounded-lg bg-gradient-to-br from-green-400 to-indigo-400 dark:from-green-700 dark:to-indigo-800`
 
   const HeroContent = tw.div`flex-col hero-content lg:flex-row`
   const HeroMessageBox = tw.div`lg:mr-20`

@@ -46,11 +46,6 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
       )
     }
 
-    let parent = (type === 'posts' ? '/posts' : null)
-    if (frontmatter.parent) {
-      parent = frontmatter.parent
-    }
-
     let pageImage = `${ogpBucket}/${slug}_${lang}.png`
 
     let ogpSlug = (type === 'posts' ? `posts/${slug}` : slug)
@@ -61,7 +56,7 @@ const mdPage: React.FC<PageProps<GatsbyTypes.MakeMDPageQuery>> = ({data}) => {
     }
 
     return (
-        <Layout pageTitle={title} parent={parent} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
+        <Layout pageTitle={title} pageDescription={excerpt} pageSlug={ogpSlug} pageImage={pageImage}>
             <section className="prose mx-auto" key={id}>
                 {fallbackInfo}
                 <h1>{title}</h1>
@@ -85,7 +80,6 @@ export const query = graphql`
         date
         showDate
         title
-        parent
         image {
           childImageSharp {
             fixed {
@@ -108,7 +102,6 @@ export const query = graphql`
         date
         showDate
         title
-        parent
         image {
           childImageSharp {
             fixed {
