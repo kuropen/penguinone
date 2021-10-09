@@ -8,13 +8,14 @@ tags:
 type: posts
 lang: ja
 slug: 20210924-covid-19-vaccination-1st
+image: ./mika-baumeister-JEKUlp6Gi5s-unsplash.jpg
 ---
-**免責事項:** この記事に記載する内容は個人の感想であり、医療・医薬品に関する正確な情報を提供することを企図したものではありません。
-なお、ワクチンに関する情報は[厚生労働省](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/vaccine_00184.html)ならびにお住まいの自治体のWebサイト等でご確認ください。
+<div class="alert alert-warning"><p class="block">
+この記事に記載する内容は個人の感想であり、医療・医薬品に関する正確な情報を提供することを企図したものではありません。
+なお、ワクチンに関する情報は<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/vaccine_00184.html">厚生労働省</a>ならびにお住まいの自治体のWebサイト等でご確認ください。
+</p></div>
 
-**********
-
-![](./mika-baumeister-JEKUlp6Gi5s-unsplash.jpg)
+![ワクチンのイメージ](./mika-baumeister-JEKUlp6Gi5s-unsplash.jpg)
 
 <small>Photo by <a href="https://unsplash.com/@mbaumi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mika Baumeister</a> on <a href="https://unsplash.com/s/photos/vaccine?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></small>
 

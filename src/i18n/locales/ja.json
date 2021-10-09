@@ -3,5 +3,8 @@
     "welcome": "Welcome to Penguinone",
     "frontMessage": "さいたま市を拠点に活動するWebプログラマー・Kuropenの実験施設にようこそ",
     "siteinfo": "サイト情報",
-    "profile": "プロフィール"
+    "profile": "プロフィール",
+    "notesLocale": "現在ブログ記事は日本語のみです。",
+    "tagList": "タグ一覧",
+    "allArticles": "すべての記事"
 }

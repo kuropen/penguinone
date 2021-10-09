@@ -4,6 +4,7 @@ import { graphql, PageProps } from 'gatsby'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 import tw from "tailwind-styled-components"
+import { PageWithListLayout, TypePageListBox, TypePageList, TypePageListTitle, Divider, SectionBox, generateTypePageList } from "../components/subPageLayout"
 
 const mdPageAbout: React.FC<PageProps<GatsbyTypes.MakeAboutPageQuery>> = ({data}) => {
     let doc = data.markdownRemark
@@ -33,19 +34,7 @@ const mdPageAbout: React.FC<PageProps<GatsbyTypes.MakeAboutPageQuery>> = ({data}
       fallbackInfo = (<FallbackAlert><FormattedMessage id="notTranslated" /></FallbackAlert>)
     }
 
-    const TypePageList = tw.ul`menu items-stretch px-3 shadow-lg rounded-box`
-    const TypePageListTitle = tw.li`menu-title`
-    const typePages = data.allMarkdownRemark.nodes.map((node) => {
-      return (
-        <li className={node.frontmatter?.slug === slug ? 'bordered' : ''} key={node.frontmatter?.slug}>
-          <Link to={`/${node.frontmatter?.slug}`}>{node.frontmatter?.title}</Link>
-        </li>
-      )
-    })
-    const TypePageListBox = tw.nav`md:flex-none mr-2`
-    const PageWithListLayout = tw.div`mx-auto md:w-max md:flex`
-    const SectionBox = tw.section`md:flex-1 prose`
-    const Divider = tw.div`divider w-full md:hidden`
+    const typePages = generateTypePageList(data.allMarkdownRemark.nodes, slug || '')
 
     return (
         <Layout pageTitle={title} pageDescription={excerpt} pageSlug={slug} pageImage={pageImage}>

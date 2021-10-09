@@ -1,8 +1,7 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import { graphql, PageProps } from 'gatsby'
-import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
-import PostsIndex from "../components/postsIndex"
+import BlogListLayout from "../components/blogListLayout"
 
 const format = require('date-format')
 
@@ -10,26 +9,10 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIn
     const tag: string = pageContext.tag
     const {nodes} = data.allMarkdownRemark
 
-    const articleLinks = nodes.map((node) => {
-        const dateObj = node.frontmatter?.date ? new Date(node.frontmatter.date) : new Date()
-        const dateShown = (<span>{format('yyyy/MM/dd', dateObj)}</span>)
-
-        return (
-            <li key={node.id}>{dateShown} -- <Link to={`/posts/${node.frontmatter?.slug}`}>{node.frontmatter?.title}</Link></li>
-        )
-    })
     return (
         <Layout pageTitle={tag} parent="/tags">
-            <section>
-                <div className="prose mx-auto">
-                    <h1>{tag}</h1>
-                </div>
-                <PostsIndex>
-                    <ul>
-                        {articleLinks}
-                    </ul>
-                </PostsIndex>
-            </section>
+            {/* @ts-ignore */}
+            <BlogListLayout tagData={data.allSitePage.edges} blogData={nodes} currentPath={`tags/${tag}`} />
         </Layout>
     )
 }
@@ -42,14 +25,26 @@ query TagIndex ($tag: String!) {
       sort: {fields: frontmatter___date, order: DESC}
       filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
-    nodes {
-      id
-      frontmatter {
-        slug
-        title
-        date
-      }
+        nodes {
+            id
+            frontmatter {
+                slug
+                title
+                date
+                image {
+                    childImageSharp {
+                        gatsbyImageData
+                    }
+                }
+            }
+        }
     }
-  }
+    allSitePage(filter: {path: {regex: "/^\\/tags/"}}) {
+        edges {
+            node {
+                path
+            }
+        }
+    }
 }
 `

@@ -5,6 +5,7 @@ import { SRLWrapper } from 'simple-react-lightbox'
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
 import tw from "tailwind-styled-components"
 import { StaticImage } from "gatsby-plugin-image"
+import { PageWithListLayout, TypePageListBox, TypePageList, TypePageListTitle, Divider, SectionBox, generateTypePageList } from "../components/subPageLayout"
 
 const mdPageProfile: React.FC<PageProps<GatsbyTypes.MakeAboutPageQuery>> = ({data}) => {
     let doc = data.markdownRemark
@@ -34,19 +35,7 @@ const mdPageProfile: React.FC<PageProps<GatsbyTypes.MakeAboutPageQuery>> = ({dat
       fallbackInfo = (<FallbackAlert><FormattedMessage id="notTranslated" /></FallbackAlert>)
     }
 
-    const TypePageList = tw.ul`menu items-stretch px-3 shadow-lg rounded-box`
-    const TypePageListTitle = tw.li`menu-title`
-    const typePages = data.allMarkdownRemark.nodes.map((node) => {
-      return (
-        <li className={node.frontmatter?.slug === slug ? 'bordered' : ''} key={node.frontmatter?.slug}>
-          <Link to={`/${node.frontmatter?.slug}`}>{node.frontmatter?.title}</Link>
-        </li>
-      )
-    })
-    const TypePageListBox = tw.nav`md:flex-none mr-2 md:w-56`
-    const PageWithListLayout = tw.div`mx-auto md:w-max md:flex`
-    const SectionBox = tw.section`md:flex-1 prose`
-    const Divider = tw.div`divider w-full md:hidden`
+    const typePages = generateTypePageList(data.allMarkdownRemark.nodes, slug || '')
 
     const KuropenBox = tw.figure`text-center rounded-box shadow-lg mb-2 p-4 bg-gradient-to-br from-green-400 to-indigo-400 dark:from-green-700 dark:to-indigo-800`
     const PenguinBox = tw.div`avatar`

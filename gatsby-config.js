@@ -80,7 +80,15 @@ module.exports = {
     "gatsby-plugin-catch-links",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-robots-txt",
-    "gatsby-plugin-typegen",
+    {
+      resolve: "gatsby-plugin-typegen",
+      options: {
+        outputPath: "src/types/generated-gatsby-types.d.ts",
+        emitSchema: {
+          "./schema.graphql": true,
+        }
+      }
+    },
     "gatsby-plugin-typescript",
     'gatsby-plugin-postcss',
     {

@@ -3,5 +3,8 @@
     "welcome": "Welcome to Penguinone",
     "frontMessage": "This is an experiment facility of Kuropen, a web engineer working in Saitama, Japan.",
     "siteinfo": "Site Information",
-    "profile": "Profile"
+    "profile": "Profile",
+    "notesLocale": "Notes are currently Japanese only.",
+    "tagList": "Tag List",
+    "allArticles": "All Articles"
 }
