@@ -53,6 +53,9 @@ All websites on domains above are HTTPS-only. HTTP protocol communications are r
 ### Server environments
 ![System Structure](./system_structure_202110_2.png)
 
+Note: Caption is in Japanese. This image was drawn when this site was on Gatsby Cloud, I will redraw later.
+
+
 - Current Webpage since July 2021
    - Hosting: [Vercel](https://vercel.com/) [^2]
    - HTML Generator: [Gatsby](https://www.gatsbyjs.com/)
@@ -65,9 +68,11 @@ All websites on domains above are HTTPS-only. HTTP protocol communications are r
 ### Components used for this website
 - Web fonts
    - [Orbitron](https://www.theleagueofmoveabletype.com/orbitron)
-   - [Noto](https://fonts.google.com/noto)
    - [IBM Plex Sans JP](https://github.com/IBM/plex) [^4]
-- [MUI](https://mui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+   - [aspect-ratio plugin](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
+   - [typography plugin](https://github.com/tailwindlabs/tailwindcss-typography)
+   - [daisyUI](https://daisyui.com/)
 - [Simple React Lightbox](https://simple-react-lightbox.dev/)
 
 [^4]: Used for open graph image. Not used in web page.
