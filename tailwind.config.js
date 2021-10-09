@@ -28,7 +28,7 @@ const generateFontFamilyArray = (baseFontFamily) => {
 
 module.exports = {
   purge: {
-    content: ["./src/**/*.{js,jsx,ts,tsx}"],
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./content/**/*.md"],
     options: {
       safelist: [
         /data-theme$/,
