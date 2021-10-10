@@ -68,7 +68,7 @@ query SiteTitle {
 
     const MenuBtnContainer = tw.nav`dropdown dropdown-right mr-2 flex-none`
     const MenuBtn = tw.button`btn btn-ghost`
-    const DropdownMenu = tw.ul`p-2 shadow menu dropdown-content bg-base-100 rounded-box w-48`
+    const DropdownMenu = tw.ul`p-2 shadow menu dropdown-content bg-base-100 text-base-content rounded-box w-48`
 
     const Container = tw.div`container mx-auto px-2 md:px-0 drawer`
     const AppBar = tw.header`navbar mt-0 mb-2 shadow-lg bg-neutral text-neutral-content rounded-b-lg`
