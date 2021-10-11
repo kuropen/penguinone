@@ -18,7 +18,7 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagListQuery>> = ({data}) => {
     })
 
     return (
-        <Layout pageTitle="タグ一覧" parent="/posts">
+        <Layout pageTitle="タグ一覧">
             <section>
                 <div className="prose mx-auto">
                     <h1>タグ一覧</h1>

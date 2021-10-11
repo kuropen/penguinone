@@ -15,7 +15,7 @@ const PostsPage: React.FC<PageProps<GatsbyTypes.TagIndexQuery, GatsbyTypes.TagIn
     const {nodes} = data.allMarkdownRemark
 
     return (
-        <Layout pageTitle={tag} parent="/tags">
+        <Layout pageTitle={tag}>
             {/* @ts-ignore */}
             <BlogListLayout tagData={data.allSitePage.edges} blogData={nodes} currentPath={`tags/${tag}`} />
         </Layout>

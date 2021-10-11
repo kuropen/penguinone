@@ -13,15 +13,20 @@ import { FiMenu, FiGlobe } from "react-icons/fi"
 import tw from "tailwind-styled-components"
 import styled from "styled-components"
 import BaseLocaleButton from "./localeButton"
+import { StaticImage } from "gatsby-plugin-image";
 
 interface LayoutProps {
     pageTitle?: string | null
     hideMenu?: boolean
+    /**
+     * @deprecated parent link is removed
+     */
     parent?: string | null
     pageDescription?: string | null
     pageType?: string | null
     pageImage?: string | null
     pageSlug?: string | null
+    licenseNotCC?: boolean
 }
 
 interface MenuContentShown {
@@ -29,7 +34,7 @@ interface MenuContentShown {
     caption: string
 }
 
-const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageTitle, parent, pageDescription, pageType, pageImage, pageSlug}) => {
+const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({children, pageTitle, pageDescription, pageType, pageImage, pageSlug, licenseNotCC}) => {
     const intl = useIntl()
 
     const siteTitleQuery: GatsbyTypes.SiteTitleQuery = useStaticQuery<GatsbyTypes.SiteTitleQuery>(graphql`
@@ -60,13 +65,6 @@ query SiteTitle {
         path: content?.path || ''
     })) : []
     let menuContentShown = originalMenuContent
-    if (parent) {
-        const backMenuEntry: MenuContentShown[] = ([{
-            caption: 'back',
-            path: parent,
-        }])
-        menuContentShown = backMenuEntry.concat(originalMenuContent)
-    }
     const menuElements = menuContentShown.map((content) => (
         <li key={content.path}><Link to={content.path}>{content.caption}</Link></li>
     ))
@@ -83,7 +81,9 @@ query SiteTitle {
 
     const LocaleButton = tw(BaseLocaleButton)`btn btn-ghost`
 
-    const Footer = tw.footer`mt-2 p-2 bg-neutral text-neutral-content rounded-lg`
+    const Footer = tw.footer`mt-2 p-2 bg-neutral text-neutral-content rounded-lg flex flex-row items-center`
+    const Credit = tw.address`not-italic flex-1`
+    const LicenseBox = tw.div`flex-none`
 
     return (
         <Container>
@@ -113,7 +113,17 @@ query SiteTitle {
                 {children}
             </section>
             <Footer>
-                Copyright &copy; Kuropen.
+                <Credit>
+                    Copyright &copy; Kuropen.
+                </Credit>
+                { licenseNotCC ? <React.Fragment /> : (
+                    <LicenseBox>
+                        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+                            <StaticImage src="../images/cc-by-sa.svg" width={88} height={31} 
+                                alt="Licensed under Creative Commons Attribution-ShareAlike 4.0, unless otherwise noted." />
+                        </a>
+                    </LicenseBox>
+                )}
             </Footer>
         </Container>
     )
