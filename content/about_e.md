@@ -17,8 +17,10 @@ Please use such information at your own risk.
 I am responsible all information on this website. Please don't contact any other entities mentioned on this website.
 
 ### Copyright notice
-All contents on this website is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), 
+All texts on this website is licensed under [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/), 
 unless otherwise noted.
+
+For image and source code used for page generation, please refer to [the readme file on GitHub](https://github.com/kuropen/penguinone/blob/main/README.md).
 
 ### Checked environment
 This website and related website is checked with following environments.

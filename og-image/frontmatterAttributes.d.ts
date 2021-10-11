@@ -3,11 +3,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-    @apply mx-0;
+type DocumentFrontmatterAttributes = {
+    title: string,
+    slug: string,
+    image?: string,
+    lang: string,
 }
+
+export default DocumentFrontmatterAttributes

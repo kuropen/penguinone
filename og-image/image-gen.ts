@@ -1,9 +1,14 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
 import { Canvas, createCanvas, registerFont, loadImage } from "canvas"
 import * as path from "path"
 import fs from "fs"
 import fsPromises from "fs/promises"
 import frontmatter, { FrontMatterResult } from "front-matter"
-import DocumentFrontmatterAttributes from "../dev-tools/frontmatterAttributes"
+import DocumentFrontmatterAttributes from "./frontmatterAttributes"
 
 interface SplitText {
     line: string,
@@ -118,7 +123,7 @@ const createOgImage = async (meta: DocumentFrontmatterAttributes) => {
 }
 
 const main = () => {
-    const getFiles = require('../dev-tools/getFiles')
+    const getFiles = require('./getFiles')
     const promises: Promise<void>[] = []
 
     const mdFiles: string[] = getFiles(`${__dirname}/../content`).filter((fileName: string) => {
