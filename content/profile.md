@@ -15,14 +15,13 @@ slug: profile
 
 - [Fediverse/ActivityPub](/activitypub)
   - [Mastodon (まちトドン)](https://matitodon.com/@kuropen)
-  - [Mastodon (銀河丼)](https://gingadon.com/@kuropen)[^1]
+  - [Mastodon (銀河丼)](https://gingadon.com/@kuropen)
   - [Dolphin](https://kuropen.me/@krpn)[^2]
 - [Twitter](https://twitter.com/kuropen_aizu)
 - [Facebook](https://www.facebook.com/yuda.hirochika)
 - [Instagram](https://instagram.com/kuropen)
 - [GitHub](https://github.com/kuropen)
 
-[^1]: [障害の影響により休止中](/ja/posts/20211005-notice-regarding-misskey)
 [^2]: [データベース不整合の影響により更新終了](/ja/posts/20210916-notice-regarding-dolphin)
 
 ## 趣味
