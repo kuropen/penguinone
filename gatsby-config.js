@@ -95,6 +95,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-typescript",
+    `gatsby-plugin-styled-components`,
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-zeit-now',
