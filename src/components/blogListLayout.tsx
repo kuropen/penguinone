@@ -43,7 +43,7 @@ const BlogListLayout: React.FC<BlogListLayoutProps> = (props) => {
         const figure = node.frontmatter?.image ? (
             <ArticleLinkCardFigure>
                 {/* @ts-ignore */}
-                <GatsbyImage image={getImage(node.frontmatter?.image)} />
+                <GatsbyImage image={getImage(node.frontmatter?.image)} alt="" />
             </ArticleLinkCardFigure>
         ) : null
 
