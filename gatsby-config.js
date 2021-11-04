@@ -117,5 +117,15 @@ module.exports = {
         fallbackLanguage: `en`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Penguinone',
+        short_name: 'Penguinone',
+        start_url: '/',
+        display: 'minimal-ui',
+        icon: './src/images/penguin.png',
+      },
+    },
   ],
 };
