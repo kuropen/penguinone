@@ -46,7 +46,6 @@
     "gatsby-plugin-styled-components": "^5.0.0",
     "gatsby-plugin-typegen": "^2.2.4",
     "gatsby-plugin-typescript": "^4.0.0",
-    "gatsby-plugin-zeit-now": "^0.5.0",
     "gatsby-remark-images": "^6.0.0",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-transformer-remark": "^5.0.0",

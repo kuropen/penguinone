@@ -98,11 +98,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-postcss',
     {
-      resolve: 'gatsby-plugin-zeit-now',
-      options: {
-      }
-    },
-    {
       resolve: `gatsby-plugin-react-intl`,
       options: {
         // language JSON resource path

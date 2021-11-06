@@ -30,14 +30,6 @@ exports.createPages = async function ({ actions, graphql }) {
     let fullPath = slug
     if (type === 'posts') {
       fullPath = `posts/${slug}`
-      createRedirect({
-        fromPath: `/blog/${slug}`,
-        toPath: `/posts/${slug}`
-      })
-      createRedirect({
-        fromPath: `/articles/${slug}`,
-        toPath: `/posts/${slug}`
-      })
     }
     let typeTemplate = `./src/templates/${type}.tsx`
     const isTypeTemplateAvailable = fs.existsSync(path.resolve(typeTemplate))
@@ -59,21 +51,5 @@ exports.createPages = async function ({ actions, graphql }) {
       component: require.resolve(`./src/templates/tag.tsx`),
       context: { tag: tag }
     })
-    createRedirect({fromPath: `/category/${tag}`, toPath: `/tags/${tag}`})
   })
-
-  const prismicIdJson = await fsPromises.readFile('./prismic_id.json')
-  const prismicIds = JSON.parse(prismicIdJson)
-  for (const id in prismicIds) {
-    createRedirect({
-      fromPath: `/blog/${id}`,
-      toPath: `/posts/${prismicIds[id]}`
-    })
-    createRedirect({
-      fromPath: `/articles/${id}`,
-      toPath: `/posts/${prismicIds[id]}`
-    })
-  }
-
-  createRedirect({fromPath: '/polaris', toPath: 'https://xiv.kuropen.org/polaris/'})
 }
