@@ -5,8 +5,9 @@
  */
 import * as React from "react"
 import { useIntl, Link, FormattedMessage } from "gatsby-plugin-react-intl"
-import { PageWithListLayout, TypePageListBox, TypePageList, TypePageListTitle, Divider, generateTypePageList, TypePageListSource } from "../components/subPageLayout"
+import { PageWithListLayout, TypePageListBox, TypePageList, TypePageListTitle, generateTypePageList, TypePageListSource } from "../components/subPageLayout"
 import tw from "tailwind-styled-components"
+import { FiArrowLeft } from "react-icons/fi"
 
 export interface BlogLayoutProps {
     readonly tagData: ReadonlyArray<{
@@ -39,24 +40,36 @@ const BlogLayout: React.FC<BlogLayoutProps> = (props) => {
     })
     const typePages = generateTypePageList(typePageListSource, props.currentPath || '')
 
+    const MobileHidden = tw.div`hidden md:block`
+    const MobileShown = tw.div`md:hidden`
     const BlogPageLayout = tw(PageWithListLayout)`md:flex-row-reverse`
+    const BackBtn = tw(Link)`btn btn-block`
 
     return (
         <BlogPageLayout>
             <div>
                 {props.children}
             </div>
-            <Divider />
-            <TypePageListBox>
-                <TypePageList>
-                    <TypePageListTitle>
-                        <span>
-                            <FormattedMessage id="tagList" />
-                        </span>
-                    </TypePageListTitle>
-                    {typePages}
-                </TypePageList>
-            </TypePageListBox>
+            <MobileHidden>
+                <TypePageListBox>
+                    <TypePageList>
+                        <TypePageListTitle>
+                            <span>
+                                <FormattedMessage id="tagList" />
+                            </span>
+                        </TypePageListTitle>
+                        {typePages}
+                    </TypePageList>
+                </TypePageListBox>
+            </MobileHidden>
+            { props.currentPath === 'posts' ? null :
+                <MobileShown>
+                    <BackBtn to="/posts">
+                        <FiArrowLeft />
+                        <FormattedMessage id="backToArticles" />
+                    </BackBtn>
+                </MobileShown>
+            }
         </BlogPageLayout>
     )
 }
