@@ -41,7 +41,7 @@ slug: about
 注意：このサイトは、 Internet Explorer での動作確認は一切致しません。
 
 - Chromium系ブラウザ（Edge[^1], Brave, Vivaldi, Chrome等）
-   - Windows 10 が動作する 画面解像度 1920 x 1080 のPC
+   - Windows 11 が動作する 画面解像度 1920 x 1080 のPC
    - Android 11 が動作する Galaxy S20+ (au SCG02)
 - Safari と互換性のあるブラウザ
    - iPad OS 14 が動作する iPad mini 第5世代
@@ -66,22 +66,12 @@ slug: about
 また、上記ドメインにおける全てのWebサイトは https 通信を実施しており、 http 通信に対する応答はリダイレクトおよびエラー応答以外は行っておりません。
 
 ## 当サイトのサーバ環境について
-当サイトは下記の環境で運用しています。
-
-![プロジェクト含む公開システムの構成図](./system_structure_202110_2.png)
-
-※Gatsby Cloud時代のものが一部含まれています。書き直し予定
-
-- 2021年7月リリースの新Webページ (2021年9月21日現在)
-   - ホスティング環境: [Vercel](https://vercel.com/) [^2]
+- 2021年7月リリースの新Webページ (2022年2月1日現在)
+   - ホスティング環境: [Cloudflare Pages](https://pages.cloudflare.com/)
    - HTML生成ソフト: [Gatsby](https://www.gatsbyjs.com/)
-   - データ管理: [GitHub](https://github.com/kuropen/penguinone) [^3]
+   - データ管理: [GitHub](https://github.com/kuropen/penguinone)
 - リダイレクトシステム（2021年3月リニューアル前のブログ記事URLを新URLに転送するシステム）
-   - Gatsby Cloudにて、2020年1月以前の様式の記事URLなら現行URLにリダイレクト
-
-[^2]: 版権上GitHubのリポジトリで管理できない画像類を含むコンテンツでは、Amazon S3を使用しています。
-
-[^3]: 版権上GitHubのリポジトリで管理できない画像類を含むコンテンツでは、AWS CodeCommit を使用しています。
+   - Cloudflare Workersにて、2020年1月以前の様式の記事URLなら現行URLにリダイレクト
 
 ## 当サイトで使用しているコンポーネントについて
 当サイトでは以下のコンポーネントを使用しています。

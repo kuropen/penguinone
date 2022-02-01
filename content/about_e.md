@@ -53,19 +53,10 @@ The author of this website owns following domain.
 All websites on domains above are HTTPS-only. HTTP protocol communications are redirected.
 
 ### Server environments
-![System Structure](./system_structure_202110_2.png)
-
-Note: Caption is in Japanese. This image was drawn when this site was on Gatsby Cloud, I will redraw later.
-
-
 - Current Webpage since July 2021
-   - Hosting: [Vercel](https://vercel.com/) [^2]
+   - Hosting: [Cloudflare Pages](https://pages.cloudflare.com/)
    - HTML Generator: [Gatsby](https://www.gatsbyjs.com/)
-   - Data Management: [GitHub](https://github.com/kuropen/penguinone) [^3]
-
-[^2]: For some contents, Amazon S3 used for copyright protection.
-
-[^3]: For some contents, AWS CodeCommit used for copyright protection.
+   - Data Management: [GitHub](https://github.com/kuropen/penguinone)
 
 ### Components used for this website
 - Web fonts
