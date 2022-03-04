@@ -770,12 +770,12 @@ type MarkdownRemarkFrontmatter {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  showDate: Boolean
-  draft: Boolean
-  tags: [String]
   type: String
   lang: String
   slug: String
+  showDate: Boolean
+  draft: Boolean
+  tags: [String]
   image: File
 }
 
@@ -964,12 +964,12 @@ input MarkdownRemarkFilterInput {
 input MarkdownRemarkFrontmatterFilterInput {
   title: StringQueryOperatorInput
   date: DateQueryOperatorInput
-  showDate: BooleanQueryOperatorInput
-  draft: BooleanQueryOperatorInput
-  tags: StringQueryOperatorInput
   type: StringQueryOperatorInput
   lang: StringQueryOperatorInput
   slug: StringQueryOperatorInput
+  showDate: BooleanQueryOperatorInput
+  draft: BooleanQueryOperatorInput
+  tags: StringQueryOperatorInput
   image: FileFilterInput
 }
 
@@ -1242,12 +1242,12 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___id
   childrenMarkdownRemark___frontmatter___title
   childrenMarkdownRemark___frontmatter___date
-  childrenMarkdownRemark___frontmatter___showDate
-  childrenMarkdownRemark___frontmatter___draft
-  childrenMarkdownRemark___frontmatter___tags
   childrenMarkdownRemark___frontmatter___type
   childrenMarkdownRemark___frontmatter___lang
   childrenMarkdownRemark___frontmatter___slug
+  childrenMarkdownRemark___frontmatter___showDate
+  childrenMarkdownRemark___frontmatter___draft
+  childrenMarkdownRemark___frontmatter___tags
   childrenMarkdownRemark___frontmatter___image___sourceInstanceName
   childrenMarkdownRemark___frontmatter___image___absolutePath
   childrenMarkdownRemark___frontmatter___image___relativePath
@@ -1341,12 +1341,12 @@ enum FileFieldsEnum {
   childMarkdownRemark___id
   childMarkdownRemark___frontmatter___title
   childMarkdownRemark___frontmatter___date
-  childMarkdownRemark___frontmatter___showDate
-  childMarkdownRemark___frontmatter___draft
-  childMarkdownRemark___frontmatter___tags
   childMarkdownRemark___frontmatter___type
   childMarkdownRemark___frontmatter___lang
   childMarkdownRemark___frontmatter___slug
+  childMarkdownRemark___frontmatter___showDate
+  childMarkdownRemark___frontmatter___draft
+  childMarkdownRemark___frontmatter___tags
   childMarkdownRemark___frontmatter___image___sourceInstanceName
   childMarkdownRemark___frontmatter___image___absolutePath
   childMarkdownRemark___frontmatter___image___relativePath
@@ -2722,12 +2722,12 @@ enum MarkdownRemarkFieldsEnum {
   id
   frontmatter___title
   frontmatter___date
-  frontmatter___showDate
-  frontmatter___draft
-  frontmatter___tags
   frontmatter___type
   frontmatter___lang
   frontmatter___slug
+  frontmatter___showDate
+  frontmatter___draft
+  frontmatter___tags
   frontmatter___image___sourceInstanceName
   frontmatter___image___absolutePath
   frontmatter___image___relativePath

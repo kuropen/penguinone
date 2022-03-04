@@ -1521,6 +1521,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/orbitron@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/orbitron/-/orbitron-4.5.4.tgz#68c2e3e1712c5d9cf2ce10dd8ffd4fff5f0e6cb9"
+  integrity sha512-BdkIxIyOa8BR7AhL4XQxm7OjJs4xCnSNi2iiD6fTJzq/f/PMzEVvKTYk7GlpLG3Wr9+jtTXsZPGTv4RLcT+fkA==
+
 "@formatjs/ecma402-abstract@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.7.1.tgz#1459a9dad654d5d5ec34765965b8e4f22ad6ff81"
@@ -12847,6 +12852,11 @@ swap-case@^2.0.2:
   integrity sha512-kc6S2YS/2yXbtkSMunBtKdah4VFETZ8Oh6ONSmSd9bRxhqTrtARUCBUiWXH3xVPpvR7tz2CSnkuXVE42EcGnMw==
   dependencies:
     tslib "^2.0.3"
+
+swr@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.2.2.tgz#6cae09928d30593a7980d80f85823e57468fac5d"
+  integrity sha512-ky0BskS/V47GpW8d6RU7CPsr6J8cr7mQD6+do5eky3bM0IyJaoi3vO8UhvrzJaObuTlGhPl2szodeB2dUd76Xw==
 
 symbol-observable@^1.0.4, symbol-observable@^1.2.0:
   version "1.2.0"

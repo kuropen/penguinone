@@ -7,6 +7,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { useIntl, Link } from "gatsby-plugin-react-intl"
+import "@fontsource/orbitron"
 import "../css/main.css"
 import PenguinImage from "../images/penguin.png"
 import { FiMenu, FiGlobe } from "react-icons/fi"
@@ -14,6 +15,7 @@ import tw from "tailwind-styled-components"
 import styled from "styled-components"
 import BaseLocaleButton from "./localeButton"
 import { StaticImage } from "gatsby-plugin-image";
+import PrivacyNotice from "./privacyNotice"
 
 interface LayoutProps {
     pageTitle?: string | null
@@ -77,7 +79,7 @@ query SiteTitle {
     const AppBar = tw.header`navbar mt-0 mb-2 shadow-lg bg-neutral text-neutral-content rounded-b-lg`
     const SiteLogo = tw(styled.h1`
         font-family: Orbitron, sans-serif;
-    `)`text-2xl flex-1`
+    `)`text-2xl flex-1 font-bold`
 
     const LocaleButton = tw(BaseLocaleButton)`btn btn-ghost`
 
@@ -109,6 +111,7 @@ query SiteTitle {
                 <SiteLogo><Link to="/">{title}</Link></SiteLogo>
                 <div><LocaleButton><FiGlobe /></LocaleButton></div>
             </AppBar>
+            <PrivacyNotice />
             <section className="main">
                 {children}
             </section>
