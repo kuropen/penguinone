@@ -107,7 +107,10 @@ module.exports = {
         redirect: true,
         redirectDefaultLanguageToRoot: false,
         // paths that you don't want to genereate locale pages, example: ["/dashboard/","/test/**"], string format is from micromatch https://github.com/micromatch/micromatch
-        ignoredPaths: [],
+        ignoredPaths: [
+          "/posts/**",
+          "/tags/**",
+        ],
         // option to fallback to the defined language instead of the `defaultLanguage` if the user langauge is not in the list
         fallbackLanguage: `en`,
       },
