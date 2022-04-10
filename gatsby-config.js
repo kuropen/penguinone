@@ -25,11 +25,11 @@ module.exports = {
         caption: 'my note',
         back: false,
       },
-      {
-        path: '/projects',
-        caption: 'my project',
-        back: false,
-      },
+      // {
+      //   path: '/projects',
+      //   caption: 'my project',
+      //   back: false,
+      // },
       {
         path: '/',
         caption: 'main',

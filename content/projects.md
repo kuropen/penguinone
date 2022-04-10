@@ -14,8 +14,12 @@ Kuropenは東日本大震災後の2012年から、各地の電力会社からの
 これについては、東京電力の分社化に合わせて2016年3月にサービスを終了しましたが、それから5年が経ち、電力をめぐる情勢は大きな変化を見せている中で復活した、
 全国の電力使用状況が一目でわかるページです。
 
+<!--
 - [Japan Electricity Dashboard トップページ](https://jed.kuropen.org/)
 - GitHub
   - [Webページテンプレート](https://github.com/kuropen/JED_web)
   - [APIサーバ](https://github.com/kuropen/JED_Server)
   - [クローラー](https://github.com/kuropen/elecwarn4)
+-->
+
+**現在、改修が必要なため公開停止中です。**

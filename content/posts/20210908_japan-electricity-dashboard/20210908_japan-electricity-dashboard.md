@@ -32,6 +32,8 @@ Kuropenは東日本大震災後の2012年から、各地の電力会社からの
 
 新サービスは、日本の電力消費の動向を見る場所という意味合いで、[Japan Electricity Dashboard](https://jed.kuropen.org/)という名前で運用します。
 
+**※2022年4月10日現在、改修が必要なため公開停止中です。**
+
 ## 運用方針について
 まず、TwitterやMastodon等ActivityPubのbotとしての運用は、少なくとも当面の間は行いません。
 
