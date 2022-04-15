@@ -12,9 +12,6 @@ Kuropenは以下のサーバにActivityPubアカウントを開設していま�
 - **現在使用中のアカウント**
   - 銀河丼: [@kuropen@gingadon.com](https://gingadon.com/@kuropen)
   - まちトドン: [@kuropen@matitodon.com](https://matitodon.com/@kuropen)
-- **以下は[障害等の影響により現在使用しておりません](/ja/posts/20211005-notice-regarding-misskey)**
-  - ※Misskey.ioに保有していたアカウント: 障害の影響により消滅しました
-  - 個人サーバ ([データベース不整合等の影響により更新停止](/ja/posts/20210916-notice-regarding-dolphin)): [@krpn@kuropen.me](https://kuropen.me/@krpn)
 
 なお、ActivityPubアカウントに関するお知らせは [ブログのActivityPubカテゴリ](/tags/activitypub) をご覧ください。
 

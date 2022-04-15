@@ -18,13 +18,10 @@ NOTE: Mostly in Japanese. Please check [SNS policy](/en/social) before following
 - [Fediverse/ActivityPub](/en/activitypub)
   - [Mastodon (Machitodon)](https://matitodon.com/@kuropen)
   - [Mastodon (Gingadon)](https://gingadon.com/@kuropen)
-  - [Dolphin](https://kuropen.me/@krpn) (old account)
 - [Twitter](https://twitter.com/kuropen_aizu)
 - [Facebook](https://www.facebook.com/yuda.hirochika)
 - [Instagram](https://instagram.com/kuropen)
 - [GitHub](https://github.com/kuropen)
-
-[^2]: No longer updated due to database inconsistency
 
 ## Contact information
 SNS accounts above or hykuropen@hey.com

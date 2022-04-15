@@ -12,9 +12,6 @@ Kuropen owns following ActivityPub accounts:
 - Currently in use:
     - Mastodon (Gingadon): [@kuropen@gingadon.com](https://gingadon.com/@kuropen)
     - Mastodon (Machitodon): [@kuropen@matitodon.com](https://matitodon.com/@kuropen)
-- Currently not in use:
-    - Old Personal Server (no longer updated): [@krpn@kuropen.me](https://kuropen.me/@krpn)
-    - Account on Misskey.io was [destroyed due to server failure](/en/posts/20211005-notice-regarding-misskey).
 
 Please refer to [ActivityPub tag of blog](/tags/activitypub) for notice regarding ActivityPub accounts.
 (Note that the blog is in Japanese only.)
